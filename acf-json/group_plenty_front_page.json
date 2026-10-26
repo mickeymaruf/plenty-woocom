@@ -1,0 +1,71 @@
+{
+    "key": "group_plenty_front_page",
+    "title": "Front Page",
+    "fields": [
+        {
+            "key": "field_plenty_hero_title",
+            "label": "Hero title",
+            "name": "hero_title",
+            "type": "text",
+            "instructions": "Defaults to the site title.",
+            "required": 0,
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_plenty_hero_subtitle",
+            "label": "Hero subtitle",
+            "name": "hero_subtitle",
+            "type": "textarea",
+            "instructions": "Defaults to the site tagline.",
+            "required": 0,
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_plenty_hero_image",
+            "label": "Hero image",
+            "name": "hero_image",
+            "type": "image",
+            "required": 0,
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all"
+        },
+        {
+            "key": "field_plenty_hero_cta_label",
+            "label": "Button label",
+            "name": "hero_cta_label",
+            "type": "text",
+            "instructions": "Defaults to \"Shop now\".",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_hero_cta_url",
+            "label": "Button link",
+            "name": "hero_cta_url",
+            "type": "url",
+            "instructions": "Defaults to the WooCommerce shop page.",
+            "required": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_type",
+                "operator": "==",
+                "value": "front_page"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "acf_after_title",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Hero section on the static front page.",
+    "show_in_rest": 0,
+    "modified": 1793030400
+}

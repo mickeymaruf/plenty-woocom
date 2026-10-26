@@ -1,0 +1,39 @@
+/*
+ * Tailwind CSS v4 entry. Compiled to dist/app.css by `npm run dev` / `npm run build`.
+ *
+ * Automatic source detection is disabled; every folder containing Tailwind
+ * classes must be listed with @source below (paths are relative to this file).
+ */
+@import "tailwindcss" source(none);
+
+@source "../../*.php";
+@source "../../inc";
+@source "../../template-parts";
+@source "../../woocommerce";
+@source "../js";
+
+@theme {
+	--font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+/* Basic typography for editor content (the_content), which preflight otherwise strips. */
+@layer components {
+	.prose-content > * + * {
+		@apply mt-4;
+	}
+	.prose-content h2 {
+		@apply mt-10 text-2xl font-bold;
+	}
+	.prose-content h3 {
+		@apply mt-8 text-xl font-semibold;
+	}
+	.prose-content a {
+		@apply underline underline-offset-2;
+	}
+	.prose-content ul {
+		@apply list-disc pl-6;
+	}
+	.prose-content ol {
+		@apply list-decimal pl-6;
+	}
+}
