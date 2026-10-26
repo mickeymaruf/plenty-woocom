@@ -51,3 +51,58 @@ document.querySelectorAll( '[data-faq]' ).forEach( ( faq ) => {
 		faq.querySelector( '[data-faq-more]' ).remove();
 	} );
 } );
+
+// Contact form: submit with fetch; loading button, field errors and a status message.
+document.querySelectorAll( '[data-contact-form]' ).forEach( ( form ) => {
+	const button = form.querySelector( '[data-contact-submit]' );
+	const status = form.querySelector( '[data-contact-status]' );
+
+	const setStatus = ( type, message ) => {
+		status.textContent = message;
+		status.dataset.type = type;
+		status.hidden = ! message;
+	};
+
+	const clearErrors = () => {
+		form.querySelectorAll( '[data-error-for]' ).forEach( ( el ) => ( el.textContent = '' ) );
+		form.querySelectorAll( '[aria-invalid]' ).forEach( ( el ) => el.removeAttribute( 'aria-invalid' ) );
+	};
+
+	form.addEventListener( 'submit', async ( event ) => {
+		event.preventDefault();
+		if ( button.getAttribute( 'aria-busy' ) === 'true' ) {
+			return;
+		}
+
+		const data = new FormData( form );
+		data.set( 'ajax', '1' );
+
+		clearErrors();
+		setStatus( '', '' );
+		button.setAttribute( 'aria-busy', 'true' );
+		button.disabled = true;
+
+		try {
+			// getAttribute: the hidden "action" input shadows form.action.
+			const response = await fetch( form.getAttribute( 'action' ), { method: 'POST', body: data, credentials: 'same-origin' } );
+			const result = await response.json();
+
+			if ( result.success ) {
+				form.reset();
+				setStatus( 'success', result.data.message );
+			} else {
+				Object.entries( result.data?.errors || {} ).forEach( ( [ name, message ] ) => {
+					form.elements[ name ]?.setAttribute( 'aria-invalid', 'true' );
+					form.querySelector( `[data-error-for="${ name }"]` ).textContent = message;
+				} );
+				setStatus( 'error', result.data?.message || form.dataset.errorMessage );
+				form.querySelector( '[aria-invalid="true"]' )?.focus();
+			}
+		} catch ( error ) {
+			setStatus( 'error', form.dataset.errorMessage );
+		} finally {
+			button.setAttribute( 'aria-busy', 'false' );
+			button.disabled = false;
+		}
+	} );
+} );

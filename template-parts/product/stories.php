@@ -1,9 +1,11 @@
 <?php
 /**
- * Product page: three alternating image + text rows (safety, warranty, accessories).
- * Shared by all products; edited in the front page's "Product Page Settings" fields.
+ * Three alternating image + text rows (safety, warranty, accessories), on the product and About
+ * pages. Edited in the front page's "Product Page Settings" fields.
  *
  * @package Plenty
+ *
+ * @var array $args { @type string $class Extra section classes (e.g. padding). }
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -14,7 +16,7 @@ if ( ! $rows ) {
 	return;
 }
 ?>
-<section class="container-site">
+<section class="container-site <?php echo esc_attr( $args['class'] ?? '' ); ?>">
 	<?php foreach ( array_values( $rows ) as $index => $i ) : ?>
 		<?php
 		$eyebrow = plenty_content( "story_{$i}_eyebrow" );

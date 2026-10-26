@@ -67,6 +67,14 @@
             "required": 0
         },
         {
+            "key": "field_plenty_footer_x_url",
+            "label": "X (Twitter) URL",
+            "name": "footer_x_url",
+            "type": "text",
+            "instructions": "Shown on the Contact page. Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
             "key": "field_plenty_footer_payments_label",
             "label": "Payment methods heading",
             "name": "footer_payments_label",
@@ -272,5 +280,5 @@
     "active": true,
     "description": "Site-wide footer and cart drawer content. Footer link columns are menus (Appearance → Menus).",
     "show_in_rest": 0,
-    "modified": 1793022632
+    "modified": 1793024145
 }

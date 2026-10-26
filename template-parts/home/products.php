@@ -1,11 +1,17 @@
 <?php
 /**
- * Home: "Find your perfect mattress" product grid with category filter tabs.
+ * "Find your perfect mattress" product grid with category filter tabs (home page; also the
+ * About page, without tabs).
  *
  * Products are real WooCommerce products. Tabs are the product categories picked in the
  * "Filter categories" field, or every top-level category with products when none are picked.
  *
  * @package Plenty
+ *
+ * @var array $args {
+ *     @type bool $tabs  Show the category tabs. Default true.
+ *     @type int  $limit Number of products. Default: the "Number of products" field.
+ * }
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -14,6 +20,7 @@ if ( ! function_exists( 'wc_get_products' ) ) {
 	return;
 }
 
+$show_tabs    = $args['tabs'] ?? true;
 $category_ids = array_filter( array_map( 'intval', (array) plenty_content( 'products_categories' ) ) );
 $categories   = get_terms(
 	array(
@@ -31,7 +38,7 @@ $products = wc_get_products(
 	array(
 		'status'     => 'publish',
 		'visibility' => 'catalog',
-		'limit'      => max( 1, (int) plenty_content( 'products_limit' ) ),
+		'limit'      => max( 1, (int) ( $args['limit'] ?? plenty_content( 'products_limit' ) ) ),
 		'orderby'    => 'menu_order',
 		'order'      => 'ASC',
 		'category'   => $category_ids ? wp_list_pluck( $categories, 'slug' ) : array(),
@@ -49,7 +56,7 @@ $tab     = 'rounded-full py-2 text-[14px] font-medium leading-5 tracking-[-0.150
 	<div class="flex w-full flex-col items-center gap-8">
 		<h2 class="text-center text-[32px] font-semibold capitalize leading-[1.2] text-ink sm:text-[48px]"><?php echo esc_html( plenty_content( 'products_title' ) ); ?></h2>
 
-		<?php if ( count( $categories ) > 1 ) : ?>
+		<?php if ( $show_tabs && count( $categories ) > 1 ) : ?>
 			<div class="flex max-w-full items-center gap-4 overflow-x-auto rounded-full border border-[#e5e7eb] bg-white py-[5px] pl-[5px] pr-[25px]" role="group" aria-label="<?php esc_attr_e( 'Filter mattresses', 'plenty' ); ?>">
 				<button type="button" class="<?php echo esc_attr( $tab ); ?> shrink-0" data-filter="all" aria-pressed="true"><?php echo esc_html( plenty_content( 'products_all_label' ) ); ?></button>
 				<?php foreach ( $categories as $category ) : ?>

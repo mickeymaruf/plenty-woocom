@@ -126,12 +126,40 @@ function plenty_content_defaults(): array {
 		'cart_empty_text'         => 'Your cart is empty.',
 		'cart_empty_button'       => plenty_default_link( 'Shop mattresses', $shop ),
 
+		// Contact page (page template "Contact").
+		'contact_eyebrow'        => 'Contact Us',
+		'contact_title'          => 'Get in touch with us. We\'re here to assist you.',
+		'contact_name_label'     => 'Your Name',
+		'contact_email_label'    => 'Email Address',
+		'contact_phone_label'    => 'Phone Number (optional)',
+		'contact_message_label'  => 'Message',
+		'contact_button_label'   => 'Leave us a Message',
+		'contact_success'        => 'Thanks for your message! We’ll get back to you soon.',
+
+		// About page (page template "About").
+		'about_title'            => 'Who we are',
+		'about_text'             => 'At Plenty, we\'re here to help you create a space that reflects you and what you love. We\'ll put it all together for you. Free one-on-one design help, in our store or in your home!',
+		'about_stat_1_value'     => '4.9',
+		'about_stat_1_label'     => 'Average Rating',
+		'about_stat_2_value'     => '200+',
+		'about_stat_2_label'     => 'Sleepers served',
+		'about_stat_3_value'     => '30+',
+		'about_stat_3_label'     => 'Years crafting',
+		'about_values_title'     => 'We are best solution for your home',
+		'about_value_1_title'    => 'Considered design',
+		'about_value_1_text'     => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam diam massa sapien pulvinar eu pretium arcu mauris.',
+		'about_value_2_title'    => 'We Create For You',
+		'about_value_2_text'     => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam diam massa sapien pulvinar eu pretium arcu mauris.',
+		'about_value_3_title'    => 'Attention To Details',
+		'about_value_3_text'     => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam diam massa sapien pulvinar eu pretium arcu mauris.',
+
 		// Footer (site settings).
 		'footer_address'         => 'Av. Paseo de la Reforma 296, Piso 31, Col. Juárez, alcaldía Cuauhtémoc, C.P. 06600, CDMX',
 		'footer_hours'           => 'Ventas de lunes a domingo de 8:00 am a 11:00 pm. Atención a clientes de lunes a domingo de 8:00 am a 10:00 pm o escríbenos a hola@luuna.mx',
 		'footer_follow_label'    => 'Síguenos',
 		'footer_facebook_url'    => '#',
 		'footer_instagram_url'   => '#',
+		'footer_x_url'           => '#',
 		'footer_payments_label'  => 'Métodos de pago',
 	);
 
@@ -163,6 +191,10 @@ function plenty_image_defaults(): array {
 		'pdp_payment_3'   => array( 'pay-sm-amex.png', 40, 27.34 ),
 		'pdp_payment_4'   => array( 'pay-sm-cabal.png', 40, 27.34 ),
 		'pdp_payment_5'   => array( 'pay-sm-naranjax.png', 40, 27.34 ),
+		'about_image'     => array( 'hero.png', 1774, 887 ),
+		'about_value_1_icon' => array( 'value-design.png', 52, 54 ),
+		'about_value_2_icon' => array( 'value-create.png', 54, 54 ),
+		'about_value_3_icon' => array( 'value-details.png', 60, 54 ),
 	);
 }
 
@@ -184,10 +216,11 @@ function plenty_front_page_id(): int {
 /**
  * Read an editable content field, falling back to the design default.
  *
+ * @param int|null $post_id Page holding the field; defaults to the front page (site-wide content).
  * @return mixed String, number or ACF link array.
  */
-function plenty_content( string $name ) {
-	$page_id = plenty_front_page_id();
+function plenty_content( string $name, ?int $post_id = null ) {
+	$page_id = $post_id ?? plenty_front_page_id();
 	$value   = $page_id ? plenty_field( $name, null, $page_id ) : null;
 
 	return $value ?? ( plenty_content_defaults()[ $name ] ?? '' );
@@ -196,10 +229,11 @@ function plenty_content( string $name ) {
 /**
  * Render an editable image field (attachment ID), falling back to the bundled design image.
  *
- * @param array $fallback_attrs Overrides $attrs for the bundled image only (e.g. to keep its design size).
+ * @param array    $fallback_attrs Overrides $attrs for the bundled image only (e.g. to keep its design size).
+ * @param int|null $post_id        Page holding the field; defaults to the front page.
  */
-function plenty_content_image( string $name, string $size = 'large', array $attrs = array(), array $fallback_attrs = array() ): string {
-	$page_id = plenty_front_page_id();
+function plenty_content_image( string $name, string $size = 'large', array $attrs = array(), array $fallback_attrs = array(), ?int $post_id = null ): string {
+	$page_id = $post_id ?? plenty_front_page_id();
 	$id      = $page_id ? (int) plenty_field( $name, 0, $page_id ) : 0;
 
 	if ( $id ) {

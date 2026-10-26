@@ -1,0 +1,414 @@
+{
+    "key": "group_plenty_about_page",
+    "title": "About Page",
+    "fields": [
+        {
+            "key": "field_plenty_tab_intro",
+            "label": "Intro",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_plenty_about_title",
+            "label": "Title",
+            "name": "about_title",
+            "type": "text",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_about_text",
+            "label": "Text",
+            "name": "about_text",
+            "type": "textarea",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0,
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_plenty_about_image",
+            "label": "Image",
+            "name": "about_image",
+            "type": "image",
+            "instructions": "Wide image, at least 2680×1060. Leave empty to use the default shown in the design.",
+            "required": 0,
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "mime_types": ""
+        },
+        {
+            "key": "field_plenty_about_stat_1_value",
+            "label": "Stat 1: value",
+            "name": "about_stat_1_value",
+            "type": "text",
+            "instructions": "E.g. \"4.9\" or \"200+\". Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_about_stat_1_label",
+            "label": "Stat 1: label",
+            "name": "about_stat_1_label",
+            "type": "text",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_about_stat_2_value",
+            "label": "Stat 2: value",
+            "name": "about_stat_2_value",
+            "type": "text",
+            "instructions": "E.g. \"4.9\" or \"200+\". Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_about_stat_2_label",
+            "label": "Stat 2: label",
+            "name": "about_stat_2_label",
+            "type": "text",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_about_stat_3_value",
+            "label": "Stat 3: value",
+            "name": "about_stat_3_value",
+            "type": "text",
+            "instructions": "E.g. \"4.9\" or \"200+\". Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_about_stat_3_label",
+            "label": "Stat 3: label",
+            "name": "about_stat_3_label",
+            "type": "text",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_tab_values",
+            "label": "Values",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_plenty_about_values_title",
+            "label": "Title",
+            "name": "about_values_title",
+            "type": "text",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_about_value_1_icon",
+            "label": "Value 1: icon",
+            "name": "about_value_1_icon",
+            "type": "image",
+            "instructions": "Shown 54px tall. Leave empty to use the default shown in the design.",
+            "required": 0,
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "mime_types": ""
+        },
+        {
+            "key": "field_plenty_about_value_1_title",
+            "label": "Value 1: title",
+            "name": "about_value_1_title",
+            "type": "text",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_about_value_1_text",
+            "label": "Value 1: text",
+            "name": "about_value_1_text",
+            "type": "textarea",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0,
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_plenty_about_value_2_icon",
+            "label": "Value 2: icon",
+            "name": "about_value_2_icon",
+            "type": "image",
+            "instructions": "Shown 54px tall. Leave empty to use the default shown in the design.",
+            "required": 0,
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "mime_types": ""
+        },
+        {
+            "key": "field_plenty_about_value_2_title",
+            "label": "Value 2: title",
+            "name": "about_value_2_title",
+            "type": "text",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_about_value_2_text",
+            "label": "Value 2: text",
+            "name": "about_value_2_text",
+            "type": "textarea",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0,
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_plenty_about_value_3_icon",
+            "label": "Value 3: icon",
+            "name": "about_value_3_icon",
+            "type": "image",
+            "instructions": "Shown 54px tall. Leave empty to use the default shown in the design.",
+            "required": 0,
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "mime_types": ""
+        },
+        {
+            "key": "field_plenty_about_value_3_title",
+            "label": "Value 3: title",
+            "name": "about_value_3_title",
+            "type": "text",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_about_value_3_text",
+            "label": "Value 3: text",
+            "name": "about_value_3_text",
+            "type": "textarea",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0,
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_plenty_tab_faq",
+            "label": "FAQ",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_plenty_page_faq_1_question",
+            "label": "Question 1",
+            "name": "page_faq_1_question",
+            "type": "text",
+            "instructions": "Questions without an answer are hidden.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_page_faq_1_answer",
+            "label": "Answer 1",
+            "name": "page_faq_1_answer",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_plenty_page_faq_2_question",
+            "label": "Question 2",
+            "name": "page_faq_2_question",
+            "type": "text",
+            "instructions": "",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_page_faq_2_answer",
+            "label": "Answer 2",
+            "name": "page_faq_2_answer",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_plenty_page_faq_3_question",
+            "label": "Question 3",
+            "name": "page_faq_3_question",
+            "type": "text",
+            "instructions": "",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_page_faq_3_answer",
+            "label": "Answer 3",
+            "name": "page_faq_3_answer",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_plenty_page_faq_4_question",
+            "label": "Question 4",
+            "name": "page_faq_4_question",
+            "type": "text",
+            "instructions": "",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_page_faq_4_answer",
+            "label": "Answer 4",
+            "name": "page_faq_4_answer",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_plenty_page_faq_5_question",
+            "label": "Question 5",
+            "name": "page_faq_5_question",
+            "type": "text",
+            "instructions": "",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_page_faq_5_answer",
+            "label": "Answer 5",
+            "name": "page_faq_5_answer",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_plenty_page_faq_6_question",
+            "label": "Question 6",
+            "name": "page_faq_6_question",
+            "type": "text",
+            "instructions": "",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_page_faq_6_answer",
+            "label": "Answer 6",
+            "name": "page_faq_6_answer",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_plenty_page_faq_7_question",
+            "label": "Question 7",
+            "name": "page_faq_7_question",
+            "type": "text",
+            "instructions": "",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_page_faq_7_answer",
+            "label": "Answer 7",
+            "name": "page_faq_7_answer",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_plenty_page_faq_8_question",
+            "label": "Question 8",
+            "name": "page_faq_8_question",
+            "type": "text",
+            "instructions": "",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_page_faq_8_answer",
+            "label": "Answer 8",
+            "name": "page_faq_8_answer",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_plenty_page_faq_9_question",
+            "label": "Question 9",
+            "name": "page_faq_9_question",
+            "type": "text",
+            "instructions": "",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_page_faq_9_answer",
+            "label": "Answer 9",
+            "name": "page_faq_9_answer",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_plenty_page_faq_10_question",
+            "label": "Question 10",
+            "name": "page_faq_10_question",
+            "type": "text",
+            "instructions": "",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_page_faq_10_answer",
+            "label": "Answer 10",
+            "name": "page_faq_10_answer",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_plenty_msg_about_shared",
+            "label": "Other sections",
+            "name": "",
+            "type": "message",
+            "message": "The story rows are edited in Product Page Settings, and the product grid and \"Sleep Specialists\" in Home Page (both on the front page).",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-templates/about.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "About page intro, stats, values and FAQ.",
+    "show_in_rest": 0,
+    "modified": 1793024145
+}

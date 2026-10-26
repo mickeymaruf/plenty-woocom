@@ -1,22 +1,28 @@
 <?php
 /**
- * Product page: FAQ accordion (per product, up to 10 questions). The first 8 show; "Show all"
- * reveals the rest (assets/js/theme.js). Hidden when the product has no answered questions.
+ * FAQ accordion (up to 10 questions): per product on the product page, per page on the About
+ * page. The first 8 show; "Show all" reveals the rest (assets/js/theme.js). Hidden when there
+ * are no answered questions.
  *
  * @package Plenty
  *
- * @var array $args { @type WC_Product $product }
+ * @var array $args {
+ *     @type WC_Product $product Product (product page), or:
+ *     @type int        $post_id Page holding the fields.
+ *     @type string     $prefix  Field name prefix: "product_faq" (default) or "page_faq".
+ * }
  */
 
 defined( 'ABSPATH' ) || exit;
 
-$product_id = $args['product']->get_id();
-$visible    = 8;
-$items      = array();
+$post_id = isset( $args['product'] ) ? $args['product']->get_id() : (int) $args['post_id'];
+$prefix  = $args['prefix'] ?? 'product_faq';
+$visible = 8;
+$items   = array();
 
 for ( $i = 1; $i <= 10; $i++ ) {
-	$question = plenty_field( "product_faq_{$i}_question", '', $product_id );
-	$answer   = plenty_field( "product_faq_{$i}_answer", '', $product_id );
+	$question = plenty_field( "{$prefix}_{$i}_question", '', $post_id );
+	$answer   = plenty_field( "{$prefix}_{$i}_answer", '', $post_id );
 	if ( $question && $answer ) {
 		$items[] = array( $question, $answer );
 	}

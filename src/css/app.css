@@ -9,6 +9,7 @@
 @source "../../*.php";
 @source "../../inc";
 @source "../../template-parts";
+@source "../../page-templates";
 @source "../../woocommerce";
 @source "../../assets/js";
 

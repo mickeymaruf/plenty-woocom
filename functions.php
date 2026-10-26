@@ -18,6 +18,7 @@ require PLENTY_DIR . '/inc/enqueue.php';
 require PLENTY_DIR . '/inc/acf.php';
 require PLENTY_DIR . '/inc/template-tags.php';
 require PLENTY_DIR . '/inc/content.php';
+require PLENTY_DIR . '/inc/contact-form.php';
 
 if ( class_exists( 'WooCommerce' ) ) {
 	require PLENTY_DIR . '/inc/woocommerce.php';
