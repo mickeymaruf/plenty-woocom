@@ -1,7 +1,15 @@
 {
     "key": "group_plenty_site_settings",
-    "title": "Site Settings (Footer)",
+    "title": "Site Settings (Footer & Cart)",
     "fields": [
+        {
+            "key": "field_plenty_tab_footer",
+            "label": "Footer",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
+        },
         {
             "key": "field_plenty_footer_logo",
             "label": "Footer logo",
@@ -113,6 +121,137 @@
             "preview_size": "medium",
             "library": "all",
             "mime_types": ""
+        },
+        {
+            "key": "field_plenty_tab_cart_drawer",
+            "label": "Cart drawer",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_plenty_cart_title",
+            "label": "Title",
+            "name": "cart_title",
+            "type": "text",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_cart_free_shipping_min",
+            "label": "Free shipping from",
+            "name": "cart_free_shipping_min",
+            "type": "number",
+            "instructions": "Cart amount needed for free shipping, used for the progress bar and the \"Shipping\" line. 0 = every order ships free. Keep this in line with your WooCommerce shipping settings.",
+            "required": 0,
+            "min": 0,
+            "step": 1
+        },
+        {
+            "key": "field_plenty_cart_free_shipping_done",
+            "label": "Free shipping reached text",
+            "name": "cart_free_shipping_done",
+            "type": "text",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_cart_free_shipping_todo",
+            "label": "Free shipping progress text",
+            "name": "cart_free_shipping_todo",
+            "type": "text",
+            "instructions": "{amount} is replaced with the amount still needed. Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_cart_subtotal_label",
+            "label": "Subtotal label",
+            "name": "cart_subtotal_label",
+            "type": "text",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_cart_shipping_label",
+            "label": "Shipping label",
+            "name": "cart_shipping_label",
+            "type": "text",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_cart_shipping_free",
+            "label": "Free shipping value",
+            "name": "cart_shipping_free",
+            "type": "text",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_cart_shipping_pending",
+            "label": "Shipping not free value",
+            "name": "cart_shipping_pending",
+            "type": "text",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_cart_total_label",
+            "label": "Total label",
+            "name": "cart_total_label",
+            "type": "text",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_cart_checkout_label",
+            "label": "Checkout button label",
+            "name": "cart_checkout_label",
+            "type": "text",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_cart_trust_1",
+            "label": "Trust line 1",
+            "name": "cart_trust_1",
+            "type": "text",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_cart_trust_2",
+            "label": "Trust line 2",
+            "name": "cart_trust_2",
+            "type": "text",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_cart_trust_3",
+            "label": "Trust line 3",
+            "name": "cart_trust_3",
+            "type": "text",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_cart_empty_text",
+            "label": "Empty cart text",
+            "name": "cart_empty_text",
+            "type": "text",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_cart_empty_button",
+            "label": "Empty cart button",
+            "name": "cart_empty_button",
+            "type": "link",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0,
+            "return_format": "array"
         }
     ],
     "location": [
@@ -131,7 +270,7 @@
     "instruction_placement": "label",
     "hide_on_screen": "",
     "active": true,
-    "description": "Site-wide footer content. Footer link columns are menus (Appearance → Menus).",
+    "description": "Site-wide footer and cart drawer content. Footer link columns are menus (Appearance → Menus).",
     "show_in_rest": 0,
-    "modified": 1793020581
+    "modified": 1793022632
 }

@@ -21,4 +21,5 @@ require PLENTY_DIR . '/inc/content.php';
 
 if ( class_exists( 'WooCommerce' ) ) {
 	require PLENTY_DIR . '/inc/woocommerce.php';
+	require PLENTY_DIR . '/inc/cart-drawer.php';
 }

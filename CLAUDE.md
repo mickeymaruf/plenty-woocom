@@ -21,7 +21,7 @@ npm run build    # minified production build
 
 ## Design
 
-The layout is built from the Figma file **Plenty Website Design** (`sR6A87o4eDsGX9DwuOH9JB`), home page frame node `10:89` and product page frame node `31:7786`, designed at 1440px wide. Colours, fonts and spacing are hard-coded from the design (tokens in `src/css/app.css` `@theme`); merchants edit text and images only, not styles.
+The layout is built from the Figma file **Plenty Website Design** (`sR6A87o4eDsGX9DwuOH9JB`), home page frame node `10:89` and product page frame node `31:7786`, cart drawer node `33:9628`, designed at 1440px wide. Colours, fonts and spacing are hard-coded from the design (tokens in `src/css/app.css` `@theme`); merchants edit text and images only, not styles.
 
 ## Layout
 
@@ -34,11 +34,13 @@ inc/acf.php               ACF JSON save/load paths, plenty_field(), default-as-p
 inc/content.php           Design defaults + plenty_content() / plenty_content_image() accessors
 inc/template-tags.php     plenty_asset_img(), plenty_logo(), ACF link helpers
 inc/woocommerce.php       WooCommerce hooks (only loaded when WooCommerce is active)
+inc/cart-drawer.php       Cart drawer: wc-ajax endpoints, cart fragment, render helpers
 header.php / footer.php   Site header (logo, primary menu, cart) and footer
 front-page.php            Home page: composes template-parts/home/*
 template-parts/home/      hero, features (benefit cards), products (grid + tabs), split (hotel/factory)
 template-parts/product/   summary, gallery, buy-panel, sensation, stories, faq (product page sections)
 template-parts/sections/  support (shared by home and product pages)
+template-parts/cart/      drawer (shell), drawer-content (re-rendered as a cart fragment)
 template-parts/footer/    payment-methods
 template-parts/product-card.php  Home grid card
 page.php                  Default page (also renders Cart / Checkout / My Account)
@@ -46,6 +48,7 @@ index.php                 Fallback: blog, archives, search
 acf-json/                 ACF field group JSON (committed)
 assets/images/            Images and icons exported from Figma (defaults for every image field)
 assets/js/theme.js        Mobile nav, product filter tabs, product gallery, FAQ "Show all" (plain JS, no build)
+assets/js/cart-drawer.js  Cart drawer open/close, AJAX add to cart, quantity/remove, loading states
 src/css/app.css           Tailwind entry + design tokens
 woocommerce/single-product.php  Product page (replaces WooCommerce's default single-product layout)
 ```
@@ -64,7 +67,7 @@ woocommerce/single-product.php  Product page (replaces WooCommerce's default sin
 - ACF **free** only: no repeater, flexible content, gallery, clone fields or options pages (those are Pro). Design field groups around this — e.g. use multiple plain fields, or a custom post type for repeatable items.
 - Edit field groups in **WP Admin → ACF**; saving writes the JSON to `acf-json/` automatically. Commit those files. After pulling JSON changes, use the "Sync available" link in ACF to update the DB copy.
 - **Where content lives** (ACF free has no options pages):
-  - `group_plenty_home` ("Home Page", tabbed per section) and `group_plenty_site_settings` ("Site Settings (Footer)") are both attached to the page set as the static front page (Settings → Reading). Site-wide footer content is therefore edited on the home page.
+  - `group_plenty_home` ("Home Page", tabbed per section) and `group_plenty_site_settings` ("Site Settings (Footer & Cart)", tabs Footer / Cart drawer) are both attached to the page set as the static front page (Settings → Reading). Site-wide footer content is therefore edited on the home page.
   - `group_plenty_product_settings` ("Product Page Settings (All Products)") is also on the front page: buy-panel labels, installment plans, payment logos, sleep specialist box, the three story rows and FAQ labels — shared by every product page.
   - Per product: `group_plenty_product_card` ("Home Page Card": card text + three feature lines; icons fixed per position: bed, shield, snowflake) and `group_plenty_product_page` ("Product Page": tagline, video URL, firmness 1–4, six Sensation features, ten FAQ items). Product sections without data are hidden.
   - The product page reuses home content: benefits under the gallery are home benefit cards 2–4; the Chat/Call buttons use the home support cards 1 and 3 links; the support section is the same template part.
@@ -79,6 +82,8 @@ woocommerce/single-product.php  Product page (replaces WooCommerce's default sin
 
 - The home product grid (`template-parts/home/products.php`) lists real products; filter tabs are the categories picked in the Home Page → Products tab (or all top-level categories). Filtering is client-side in `theme.js`, matching parent categories too.
 - The product page (`woocommerce/single-product.php`) uses its own gallery (product image + gallery images), so the `wc-product-gallery-*` theme supports are off and variation images don't swap the main image. It renders WooCommerce's add-to-cart form (quantity hidden per design) and calls `WC()->structured_data->generate_product_data()` itself because the default summary hooks aren't used. Reviews, related products and upsells aren't in the design and aren't rendered.
+- **Cart drawer** (`inc/cart-drawer.php`, `assets/js/cart-drawer.js`): the header cart icon and the product page add-to-cart open an off-canvas cart instead of navigating. The product form is posted to `?wc-ajax=plenty_add_to_cart` with `add-to-cart` renamed to `plenty_add_to_cart` (so WooCommerce's own `wp_loaded` handler, which can redirect, doesn't also run); the endpoint calls `WC_Form_Handler::add_to_cart_action()` with redirects disabled, so all product types and validation behave like the normal form. `?wc-ajax=plenty_update_cart_item` sets a line's quantity (0 removes). Both return `{ fragments, cart_hash, error }`; the drawer content is the `div[data-cart-drawer-content]` fragment, so keep `template-parts/cart/drawer-content.php` renderable from the cart alone. WooCommerce's archive AJAX buttons (`added_to_cart` jQuery event) also open it. The drawer is not rendered on the cart and checkout pages. Loading states: the add button gets `aria-busy` (spinner via CSS), the drawer root gets `aria-busy` (overlay with message).
+- Free-shipping banner/"Shipping: Free" in the drawer use the "Free shipping from" setting (Site Settings → Cart drawer; 0 = always free), not WooCommerce's shipping zones — keep them in line.
 - Content wrappers and the sidebar are replaced in `inc/woocommerce.php` so shop/product pages use the theme's container.
 - `plenty_cart_link()` renders the header cart count; it is refreshed after AJAX add-to-cart through `woocommerce_add_to_cart_fragments`.
 - To override a WooCommerce template, copy it from `plugins/woocommerce/templates/` into `woocommerce/` with the same relative path. Don't add a `woocommerce.php` root template — it bypasses those overrides.

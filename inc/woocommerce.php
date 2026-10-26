@@ -31,7 +31,7 @@ function plenty_wc_wrapper_end(): void {
 function plenty_cart_link(): void {
 	$count = WC()->cart ? WC()->cart->get_cart_contents_count() : 0;
 	?>
-	<a class="plenty-cart-link relative flex size-8 items-center justify-center hover:opacity-70" href="<?php echo esc_url( wc_get_cart_url() ); ?>">
+	<a class="plenty-cart-link relative flex size-8 items-center justify-center hover:opacity-70" href="<?php echo esc_url( wc_get_cart_url() ); ?>" <?php echo function_exists( 'plenty_cart_drawer_enabled' ) && plenty_cart_drawer_enabled() ? 'aria-controls="cart-drawer" aria-haspopup="dialog"' : ''; ?>>
 		<?php echo plenty_asset_img( 'icon-bag.svg', 26, 28.67, array( 'class' => 'block', 'loading' => 'eager' ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
 		<span class="sr-only">
 			<?php

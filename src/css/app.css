@@ -143,6 +143,21 @@ body.single-product div.plenty-buy form.cart .single_add_to_cart_button:disabled
 	cursor: not-allowed;
 }
 
+/* Loading (assets/js/cart-drawer.js sets aria-busy while adding): the cart icon becomes a spinner. */
+body.single-product div.plenty-buy form.cart .single_add_to_cart_button[aria-busy="true"] {
+	opacity: 1;
+	cursor: progress;
+}
+
+body.single-product div.plenty-buy form.cart .single_add_to_cart_button[aria-busy="true"]::before {
+	box-sizing: border-box;
+	border: 2px solid rgb(255 255 255 / 0.35);
+	border-top-color: #fff;
+	border-radius: 999px;
+	background: none;
+	animation: spin 0.7s linear infinite;
+}
+
 /* Variable products: attribute dropdowns. */
 body.single-product div.plenty-buy form.cart .variations {
 	margin: 0;

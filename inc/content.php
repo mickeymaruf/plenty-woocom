@@ -109,6 +109,23 @@ function plenty_content_defaults(): array {
 		'pdp_faq_showing'          => 'Showing {shown} of {total}',
 		'pdp_faq_show_all'         => 'Show all',
 
+		// Cart drawer (site settings).
+		'cart_title'              => 'Your Cart',
+		'cart_free_shipping_min'  => 0,
+		'cart_free_shipping_done' => 'You qualify for free shipping!',
+		'cart_free_shipping_todo' => 'Add {amount} more for free shipping',
+		'cart_subtotal_label'     => 'Subtotal',
+		'cart_shipping_label'     => 'Shipping',
+		'cart_shipping_free'      => 'Free',
+		'cart_shipping_pending'   => 'Calculated at checkout',
+		'cart_total_label'        => 'Total',
+		'cart_checkout_label'     => 'Checkout',
+		'cart_trust_1'            => '365-night trial',
+		'cart_trust_2'            => 'Free returns',
+		'cart_trust_3'            => 'Lifetime warranty',
+		'cart_empty_text'         => 'Your cart is empty.',
+		'cart_empty_button'       => plenty_default_link( 'Shop mattresses', $shop ),
+
 		// Footer (site settings).
 		'footer_address'         => 'Av. Paseo de la Reforma 296, Piso 31, Col. Juárez, alcaldía Cuauhtémoc, C.P. 06600, CDMX',
 		'footer_hours'           => 'Ventas de lunes a domingo de 8:00 am a 11:00 pm. Atención a clientes de lunes a domingo de 8:00 am a 10:00 pm o escríbenos a hola@luuna.mx',

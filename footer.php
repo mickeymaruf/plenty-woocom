@@ -77,6 +77,12 @@ $footer_label = 'font-helvetica text-[16px] tracking-[0.1501px] uppercase';
 	</div>
 </footer>
 
-<?php wp_footer(); ?>
+<?php
+if ( function_exists( 'plenty_cart_drawer' ) ) {
+	plenty_cart_drawer();
+}
+
+wp_footer();
+?>
 </body>
 </html>
