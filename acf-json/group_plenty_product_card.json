@@ -1,0 +1,59 @@
+{
+    "key": "group_plenty_product_card",
+    "title": "Home Page Card",
+    "fields": [
+        {
+            "key": "field_plenty_product_card_text",
+            "label": "Card text",
+            "name": "product_card_text",
+            "type": "textarea",
+            "instructions": "Short text on the home page card. Leave empty to use the product's short description.",
+            "required": 0,
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_plenty_product_feature_1",
+            "label": "Feature 1",
+            "name": "product_feature_1",
+            "type": "text",
+            "instructions": "Comfort line (bed icon), e.g. \"Medium-firm comfort that adapts to you\".",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_product_feature_2",
+            "label": "Feature 2",
+            "name": "product_feature_2",
+            "type": "text",
+            "instructions": "Support line (shield icon), e.g. \"Full-body support for proper alignment\".",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_product_feature_3",
+            "label": "Feature 3",
+            "name": "product_feature_3",
+            "type": "text",
+            "instructions": "Cooling line (snowflake icon), e.g. \"Cool-to-the-touch cover for cooler sleep\".",
+            "required": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "product"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Feature lines shown on the product's card on the home page.",
+    "show_in_rest": 0,
+    "modified": 1793020581
+}

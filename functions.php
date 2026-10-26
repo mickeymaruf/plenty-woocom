@@ -16,6 +16,8 @@ define( 'PLENTY_URI', get_template_directory_uri() );
 require PLENTY_DIR . '/inc/setup.php';
 require PLENTY_DIR . '/inc/enqueue.php';
 require PLENTY_DIR . '/inc/acf.php';
+require PLENTY_DIR . '/inc/template-tags.php';
+require PLENTY_DIR . '/inc/content.php';
 
 if ( class_exists( 'WooCommerce' ) ) {
 	require PLENTY_DIR . '/inc/woocommerce.php';

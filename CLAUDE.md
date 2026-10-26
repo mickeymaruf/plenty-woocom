@@ -19,42 +19,66 @@ npm run build    # minified production build
 
 `dist/` is gitignored — run `npm run build` before deploying. `inc/enqueue.php` skips the stylesheet if `dist/app.css` is missing, and cache-busts with `filemtime`.
 
+## Design
+
+The layout is built from the Figma file **Plenty Website Design** (`sR6A87o4eDsGX9DwuOH9JB`), home page frame node `10:89` and product page frame node `31:7786`, designed at 1440px wide. Colours, fonts and spacing are hard-coded from the design (tokens in `src/css/app.css` `@theme`); merchants edit text and images only, not styles.
+
 ## Layout
 
 ```
-style.css           Theme header only (no styles)
-functions.php       Defines PLENTY_* constants, requires inc/*
-inc/setup.php       Theme supports, WooCommerce support, nav menus (primary, footer)
-inc/enqueue.php     Front-end assets
-inc/acf.php         ACF JSON save/load paths, plenty_field() helper
-inc/woocommerce.php WooCommerce hooks (only loaded when WooCommerce is active)
-header.php / footer.php
-front-page.php      Static front page: ACF hero + featured products
-page.php            Default page (also renders Cart / Checkout / My Account)
-index.php           Fallback: blog, archives, search
-acf-json/           ACF field group JSON (committed)
-src/css/app.css     Tailwind entry
-woocommerce/        (create as needed) WooCommerce template overrides
-template-parts/     (create as needed) get_template_part() partials
+style.css                 Theme header only (no styles)
+functions.php             Defines PLENTY_* constants, requires inc/*
+inc/setup.php             Theme supports, WooCommerce support, nav menus (primary, footer_1–3)
+inc/enqueue.php           Inter (Google Fonts), dist/app.css, assets/js/theme.js
+inc/acf.php               ACF JSON save/load paths, plenty_field(), default-as-placeholder filter
+inc/content.php           Design defaults + plenty_content() / plenty_content_image() accessors
+inc/template-tags.php     plenty_asset_img(), plenty_logo(), ACF link helpers
+inc/woocommerce.php       WooCommerce hooks (only loaded when WooCommerce is active)
+header.php / footer.php   Site header (logo, primary menu, cart) and footer
+front-page.php            Home page: composes template-parts/home/*
+template-parts/home/      hero, features (benefit cards), products (grid + tabs), split (hotel/factory)
+template-parts/product/   summary, gallery, buy-panel, sensation, stories, faq (product page sections)
+template-parts/sections/  support (shared by home and product pages)
+template-parts/footer/    payment-methods
+template-parts/product-card.php  Home grid card
+page.php                  Default page (also renders Cart / Checkout / My Account)
+index.php                 Fallback: blog, archives, search
+acf-json/                 ACF field group JSON (committed)
+assets/images/            Images and icons exported from Figma (defaults for every image field)
+assets/js/theme.js        Mobile nav, product filter tabs, product gallery, FAQ "Show all" (plain JS, no build)
+src/css/app.css           Tailwind entry + design tokens
+woocommerce/single-product.php  Product page (replaces WooCommerce's default single-product layout)
 ```
 
 ## Conventions
 
 - Prefix all functions with `plenty_`; text domain is `plenty`. Every PHP file starts with `defined( 'ABSPATH' ) || exit;`.
 - Escape all output (`esc_html`, `esc_attr`, `esc_url`, `wp_kses_post`).
+- Layout containers: `container-site` (1240px content, 100px gutters at 1440) and `container-narrow` (1120px, 160px gutters), defined as `@utility` in `app.css`.
 - Style with Tailwind utility classes directly in the PHP templates. Use `@layer components` in `src/css/app.css` only for markup we don't control (e.g. `the_content()` output via `.prose-content`, WooCommerce markup).
-- **Tailwind sources are explicit.** `app.css` uses `source(none)` and lists folders with `@source` (root `*.php`, `inc`, `template-parts`, `woocommerce`, `src/js`). If you add a new folder containing classes, add an `@source` line or its classes won't be generated.
-- Tailwind's preflight resets base styles; WooCommerce still loads its own stylesheets on top. If WooCommerce styles get in the way, dequeue them with the `woocommerce_enqueue_styles` filter.
+- **Tailwind sources are explicit.** `app.css` uses `source(none)` and lists folders with `@source` (root `*.php`, `inc`, `template-parts`, `woocommerce`, `assets/js`). If you add a new folder containing classes, add an `@source` line or its classes won't be generated.
+- **WooCommerce CSS is unlayered, Tailwind's is layered**, so on WooCommerce pages WooCommerce rules beat Tailwind utilities regardless of specificity. `app.css` rolls back WooCommerce's `img { height: auto }` with `revert-layer`, and styles WooCommerce's own markup (the add-to-cart form) with plain unlayered CSS prefixed `body.single-product div.plenty-buy` to outrank `.woocommerce div.product form.cart …`. Do the same for any other WooCommerce markup you restyle.
 
 ## ACF
 
 - ACF **free** only: no repeater, flexible content, gallery, clone fields or options pages (those are Pro). Design field groups around this — e.g. use multiple plain fields, or a custom post type for repeatable items.
 - Edit field groups in **WP Admin → ACF**; saving writes the JSON to `acf-json/` automatically. Commit those files. After pulling JSON changes, use the "Sync available" link in ACF to update the DB copy.
-- In templates, read fields with `plenty_field( 'name', $fallback )` rather than `get_field()` so pages still render when ACF is inactive or a field is empty.
-- The front-page hero group (`group_plenty_front_page.json`) applies to the page set as the static front page (Settings → Reading).
+- **Where content lives** (ACF free has no options pages):
+  - `group_plenty_home` ("Home Page", tabbed per section) and `group_plenty_site_settings` ("Site Settings (Footer)") are both attached to the page set as the static front page (Settings → Reading). Site-wide footer content is therefore edited on the home page.
+  - `group_plenty_product_settings` ("Product Page Settings (All Products)") is also on the front page: buy-panel labels, installment plans, payment logos, sleep specialist box, the three story rows and FAQ labels — shared by every product page.
+  - Per product: `group_plenty_product_card` ("Home Page Card": card text + three feature lines; icons fixed per position: bed, shield, snowflake) and `group_plenty_product_page` ("Product Page": tagline, video URL, firmness 1–4, six Sensation features, ten FAQ items). Product sections without data are hidden.
+  - The product page reuses home content: benefits under the gallery are home benefit cards 2–4; the Chat/Call buttons use the home support cards 1 and 3 links; the support section is the same template part.
+  - Header and footer link columns are WordPress menus (`primary`, `footer_1`–`footer_3`); a footer column's heading is the menu's name.
+  - The header logo uses the Customizer logo if set, otherwise the bundled Plenty wordmark.
+- Repeating items (benefit cards, support cards, bullets, payment logos) are fixed numbered fields (`feature_1_title` … `feature_4_title`), not repeaters. An empty title hides that item.
+- **Defaults:** every home/site field falls back to the design copy in `plenty_content_defaults()` and to bundled images in `plenty_image_defaults()` (`inc/content.php`). Empty text fields show their default as placeholder in the editor. When adding a field: add it to `acf-json`, add its default, and read it with `plenty_content()` / `plenty_content_image()`.
+- Product templates read fields with `plenty_field( 'name', $fallback, $post_id )` rather than `get_field()` so pages still render when ACF is inactive or a field is empty.
+- Button/link fields are ACF **link** fields (array with `title`, `url`, `target`); render them with `plenty_link_attrs()` and `plenty_link_title()`.
 
 ## WooCommerce
 
+- The home product grid (`template-parts/home/products.php`) lists real products; filter tabs are the categories picked in the Home Page → Products tab (or all top-level categories). Filtering is client-side in `theme.js`, matching parent categories too.
+- The product page (`woocommerce/single-product.php`) uses its own gallery (product image + gallery images), so the `wc-product-gallery-*` theme supports are off and variation images don't swap the main image. It renders WooCommerce's add-to-cart form (quantity hidden per design) and calls `WC()->structured_data->generate_product_data()` itself because the default summary hooks aren't used. Reviews, related products and upsells aren't in the design and aren't rendered.
 - Content wrappers and the sidebar are replaced in `inc/woocommerce.php` so shop/product pages use the theme's container.
 - `plenty_cart_link()` renders the header cart count; it is refreshed after AJAX add-to-cart through `woocommerce_add_to_cart_fragments`.
 - To override a WooCommerce template, copy it from `plugins/woocommerce/templates/` into `woocommerce/` with the same relative path. Don't add a `woocommerce.php` root template — it bypasses those overrides.

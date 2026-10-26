@@ -1,0 +1,137 @@
+{
+    "key": "group_plenty_site_settings",
+    "title": "Site Settings (Footer)",
+    "fields": [
+        {
+            "key": "field_plenty_footer_logo",
+            "label": "Footer logo",
+            "name": "footer_logo",
+            "type": "image",
+            "instructions": "Light logo for the dark footer, shown 68px tall. Leave empty to use the Plenty logo.",
+            "required": 0,
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "mime_types": ""
+        },
+        {
+            "key": "field_plenty_footer_address",
+            "label": "Address",
+            "name": "footer_address",
+            "type": "textarea",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0,
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_plenty_footer_hours",
+            "label": "Opening hours / contact",
+            "name": "footer_hours",
+            "type": "textarea",
+            "instructions": "Email addresses become links. Leave empty to use the default shown in the design.",
+            "required": 0,
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_plenty_footer_follow_label",
+            "label": "Social heading",
+            "name": "footer_follow_label",
+            "type": "text",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_footer_facebook_url",
+            "label": "Facebook URL",
+            "name": "footer_facebook_url",
+            "type": "text",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_footer_instagram_url",
+            "label": "Instagram URL",
+            "name": "footer_instagram_url",
+            "type": "text",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_footer_payments_label",
+            "label": "Payment methods heading",
+            "name": "footer_payments_label",
+            "type": "text",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_footer_payment_1",
+            "label": "Payment logo 1",
+            "name": "footer_payment_1",
+            "type": "image",
+            "instructions": "Shown 43px tall. Leave empty to use the design logo (Mercado Pago, Visa, Mastercard, American Express).",
+            "required": 0,
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "mime_types": ""
+        },
+        {
+            "key": "field_plenty_footer_payment_2",
+            "label": "Payment logo 2",
+            "name": "footer_payment_2",
+            "type": "image",
+            "instructions": "Shown 43px tall. Leave empty to use the design logo (Mercado Pago, Visa, Mastercard, American Express).",
+            "required": 0,
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "mime_types": ""
+        },
+        {
+            "key": "field_plenty_footer_payment_3",
+            "label": "Payment logo 3",
+            "name": "footer_payment_3",
+            "type": "image",
+            "instructions": "Shown 43px tall. Leave empty to use the design logo (Mercado Pago, Visa, Mastercard, American Express).",
+            "required": 0,
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "mime_types": ""
+        },
+        {
+            "key": "field_plenty_footer_payment_4",
+            "label": "Payment logo 4",
+            "name": "footer_payment_4",
+            "type": "image",
+            "instructions": "Shown 43px tall. Leave empty to use the design logo (Mercado Pago, Visa, Mastercard, American Express).",
+            "required": 0,
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "mime_types": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_type",
+                "operator": "==",
+                "value": "front_page"
+            }
+        ]
+    ],
+    "menu_order": 10,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Site-wide footer content. Footer link columns are menus (Appearance → Menus).",
+    "show_in_rest": 0,
+    "modified": 1793020581
+}

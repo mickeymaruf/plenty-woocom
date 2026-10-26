@@ -1,0 +1,533 @@
+{
+    "key": "group_plenty_home",
+    "title": "Home Page",
+    "fields": [
+        {
+            "key": "field_plenty_tab_hero",
+            "label": "Hero",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_plenty_hero_title",
+            "label": "Title",
+            "name": "hero_title",
+            "type": "text",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_hero_text",
+            "label": "Text",
+            "name": "hero_text",
+            "type": "textarea",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0,
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_plenty_hero_button",
+            "label": "Button",
+            "name": "hero_button",
+            "type": "link",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0,
+            "return_format": "array"
+        },
+        {
+            "key": "field_plenty_hero_image",
+            "label": "Background image",
+            "name": "hero_image",
+            "type": "image",
+            "instructions": "Wide image, at least 2480×960. Leave empty to use the default shown in the design.",
+            "required": 0,
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "mime_types": ""
+        },
+        {
+            "key": "field_plenty_tab_benefits",
+            "label": "Benefits",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_plenty_feature_1_icon",
+            "label": "Benefit 1 icon",
+            "name": "feature_1_icon",
+            "type": "image",
+            "instructions": "Shown up to 44px tall. Leave empty to use the default shown in the design.",
+            "required": 0,
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "mime_types": ""
+        },
+        {
+            "key": "field_plenty_feature_1_title",
+            "label": "Benefit 1 title",
+            "name": "feature_1_title",
+            "type": "text",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_feature_1_link",
+            "label": "Benefit 1 link",
+            "name": "feature_1_link",
+            "type": "link",
+            "instructions": "Optional small link under the title.",
+            "required": 0,
+            "return_format": "array"
+        },
+        {
+            "key": "field_plenty_feature_2_icon",
+            "label": "Benefit 2 icon",
+            "name": "feature_2_icon",
+            "type": "image",
+            "instructions": "Shown up to 44px tall. Leave empty to use the default shown in the design.",
+            "required": 0,
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "mime_types": ""
+        },
+        {
+            "key": "field_plenty_feature_2_title",
+            "label": "Benefit 2 title",
+            "name": "feature_2_title",
+            "type": "text",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_feature_2_link",
+            "label": "Benefit 2 link",
+            "name": "feature_2_link",
+            "type": "link",
+            "instructions": "Optional small link under the title.",
+            "required": 0,
+            "return_format": "array"
+        },
+        {
+            "key": "field_plenty_feature_3_icon",
+            "label": "Benefit 3 icon",
+            "name": "feature_3_icon",
+            "type": "image",
+            "instructions": "Shown up to 44px tall. Leave empty to use the default shown in the design.",
+            "required": 0,
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "mime_types": ""
+        },
+        {
+            "key": "field_plenty_feature_3_title",
+            "label": "Benefit 3 title",
+            "name": "feature_3_title",
+            "type": "text",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_feature_3_link",
+            "label": "Benefit 3 link",
+            "name": "feature_3_link",
+            "type": "link",
+            "instructions": "Optional small link under the title.",
+            "required": 0,
+            "return_format": "array"
+        },
+        {
+            "key": "field_plenty_feature_4_icon",
+            "label": "Benefit 4 icon",
+            "name": "feature_4_icon",
+            "type": "image",
+            "instructions": "Shown up to 44px tall. Leave empty to use the default shown in the design.",
+            "required": 0,
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "mime_types": ""
+        },
+        {
+            "key": "field_plenty_feature_4_title",
+            "label": "Benefit 4 title",
+            "name": "feature_4_title",
+            "type": "text",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_feature_4_link",
+            "label": "Benefit 4 link",
+            "name": "feature_4_link",
+            "type": "link",
+            "instructions": "Optional small link under the title.",
+            "required": 0,
+            "return_format": "array"
+        },
+        {
+            "key": "field_plenty_tab_products",
+            "label": "Products",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_plenty_products_title",
+            "label": "Title",
+            "name": "products_title",
+            "type": "text",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_products_categories",
+            "label": "Filter categories",
+            "name": "products_categories",
+            "type": "taxonomy",
+            "instructions": "Product categories shown as filter tabs, in this order. Only products in these categories are listed. Leave empty to use all top-level categories.",
+            "required": 0,
+            "taxonomy": "product_cat",
+            "field_type": "multi_select",
+            "allow_null": 1,
+            "add_term": 0,
+            "save_terms": 0,
+            "load_terms": 0,
+            "return_format": "id",
+            "multiple": 0
+        },
+        {
+            "key": "field_plenty_products_all_label",
+            "label": "\"All\" tab label",
+            "name": "products_all_label",
+            "type": "text",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_products_limit",
+            "label": "Number of products",
+            "name": "products_limit",
+            "type": "number",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0,
+            "min": 1,
+            "max": 48,
+            "step": 1
+        },
+        {
+            "key": "field_plenty_products_price_label",
+            "label": "Price label",
+            "name": "products_price_label",
+            "type": "text",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_products_button_label",
+            "label": "Card button label",
+            "name": "products_button_label",
+            "type": "text",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_products_compare",
+            "label": "Link under the grid",
+            "name": "products_compare",
+            "type": "link",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0,
+            "return_format": "array"
+        },
+        {
+            "key": "field_plenty_tab_support",
+            "label": "Support",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_plenty_support_title",
+            "label": "Title",
+            "name": "support_title",
+            "type": "text",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_support_1_title",
+            "label": "Card 1 title",
+            "name": "support_1_title",
+            "type": "text",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_support_1_link",
+            "label": "Card 1 link",
+            "name": "support_1_link",
+            "type": "link",
+            "instructions": "The link text is shown under the title (e.g. a phone number). Use tel:, mailto: or https://wa.me/ links.",
+            "required": 0,
+            "return_format": "array"
+        },
+        {
+            "key": "field_plenty_support_1_icon",
+            "label": "Card 1 icon",
+            "name": "support_1_icon",
+            "type": "image",
+            "instructions": "Shown at 42×42. Leave empty to use the default shown in the design.",
+            "required": 0,
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "mime_types": ""
+        },
+        {
+            "key": "field_plenty_support_2_title",
+            "label": "Card 2 title",
+            "name": "support_2_title",
+            "type": "text",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_support_2_link",
+            "label": "Card 2 link",
+            "name": "support_2_link",
+            "type": "link",
+            "instructions": "The link text is shown under the title (e.g. a phone number). Use tel:, mailto: or https://wa.me/ links.",
+            "required": 0,
+            "return_format": "array"
+        },
+        {
+            "key": "field_plenty_support_2_icon",
+            "label": "Card 2 icon",
+            "name": "support_2_icon",
+            "type": "image",
+            "instructions": "Shown at 42×42. Leave empty to use the default shown in the design.",
+            "required": 0,
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "mime_types": ""
+        },
+        {
+            "key": "field_plenty_support_3_title",
+            "label": "Card 3 title",
+            "name": "support_3_title",
+            "type": "text",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_support_3_link",
+            "label": "Card 3 link",
+            "name": "support_3_link",
+            "type": "link",
+            "instructions": "The link text is shown under the title (e.g. a phone number). Use tel:, mailto: or https://wa.me/ links.",
+            "required": 0,
+            "return_format": "array"
+        },
+        {
+            "key": "field_plenty_support_3_icon",
+            "label": "Card 3 icon",
+            "name": "support_3_icon",
+            "type": "image",
+            "instructions": "Shown at 42×42. Leave empty to use the default shown in the design.",
+            "required": 0,
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "mime_types": ""
+        },
+        {
+            "key": "field_plenty_tab_hotel_line",
+            "label": "Hotel Line",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_plenty_hotel_eyebrow",
+            "label": "Eyebrow",
+            "name": "hotel_eyebrow",
+            "type": "text",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_hotel_title",
+            "label": "Title",
+            "name": "hotel_title",
+            "type": "text",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_hotel_text",
+            "label": "Text",
+            "name": "hotel_text",
+            "type": "textarea",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0,
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_plenty_hotel_bullet_1",
+            "label": "Bullet 1",
+            "name": "hotel_bullet_1",
+            "type": "text",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_hotel_bullet_2",
+            "label": "Bullet 2",
+            "name": "hotel_bullet_2",
+            "type": "text",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_hotel_bullet_3",
+            "label": "Bullet 3",
+            "name": "hotel_bullet_3",
+            "type": "text",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_hotel_button",
+            "label": "Button",
+            "name": "hotel_button",
+            "type": "link",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0,
+            "return_format": "array"
+        },
+        {
+            "key": "field_plenty_hotel_image",
+            "label": "Image",
+            "name": "hotel_image",
+            "type": "image",
+            "instructions": "Landscape image, at least 1080×880. Leave empty to use the default shown in the design.",
+            "required": 0,
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "mime_types": ""
+        },
+        {
+            "key": "field_plenty_tab_factory",
+            "label": "Factory",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_plenty_factory_eyebrow",
+            "label": "Eyebrow",
+            "name": "factory_eyebrow",
+            "type": "text",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_factory_title",
+            "label": "Title",
+            "name": "factory_title",
+            "type": "text",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_factory_text",
+            "label": "Text",
+            "name": "factory_text",
+            "type": "textarea",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0,
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_plenty_factory_bullet_1",
+            "label": "Bullet 1",
+            "name": "factory_bullet_1",
+            "type": "text",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_factory_bullet_2",
+            "label": "Bullet 2",
+            "name": "factory_bullet_2",
+            "type": "text",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_factory_bullet_3",
+            "label": "Bullet 3",
+            "name": "factory_bullet_3",
+            "type": "text",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_factory_button",
+            "label": "Button",
+            "name": "factory_button",
+            "type": "link",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0,
+            "return_format": "array"
+        },
+        {
+            "key": "field_plenty_factory_image",
+            "label": "Image",
+            "name": "factory_image",
+            "type": "image",
+            "instructions": "Landscape image, at least 1080×880. Leave empty to use the default shown in the design.",
+            "required": 0,
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "mime_types": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_type",
+                "operator": "==",
+                "value": "front_page"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Content of the home page sections.",
+    "show_in_rest": 0,
+    "modified": 1793020581
+}

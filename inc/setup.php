@@ -45,14 +45,15 @@ function plenty_setup(): void {
 			),
 		)
 	);
-	add_theme_support( 'wc-product-gallery-zoom' );
-	add_theme_support( 'wc-product-gallery-lightbox' );
-	add_theme_support( 'wc-product-gallery-slider' );
+	// No wc-product-gallery-* supports: the product page uses its own gallery (template-parts/product/gallery.php).
 
+	// Footer columns use the assigned menu's name as the column heading.
 	register_nav_menus(
 		array(
-			'primary' => __( 'Primary', 'plenty' ),
-			'footer'  => __( 'Footer', 'plenty' ),
+			'primary'  => __( 'Primary', 'plenty' ),
+			'footer_1' => __( 'Footer column 1', 'plenty' ),
+			'footer_2' => __( 'Footer column 2', 'plenty' ),
+			'footer_3' => __( 'Footer column 3', 'plenty' ),
 		)
 	);
 }

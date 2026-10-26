@@ -1,0 +1,459 @@
+{
+    "key": "group_plenty_product_settings",
+    "title": "Product Page Settings (All Products)",
+    "fields": [
+        {
+            "key": "field_plenty_tab_buy_panel",
+            "label": "Buy panel",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_plenty_pdp_add_to_cart_label",
+            "label": "Add to cart label",
+            "name": "pdp_add_to_cart_label",
+            "type": "text",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_pdp_discount_label",
+            "label": "Discount badge text",
+            "name": "pdp_discount_label",
+            "type": "text",
+            "instructions": "Shown after the percentage, e.g. \"29 % de descuento\". Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_pdp_pretax_label",
+            "label": "Pre-tax price label",
+            "name": "pdp_pretax_label",
+            "type": "text",
+            "instructions": "Shown only when taxes are enabled in WooCommerce. Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_pdp_months_label",
+            "label": "\"Months\" label",
+            "name": "pdp_months_label",
+            "type": "text",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_pdp_plan_text",
+            "label": "Installment text",
+            "name": "pdp_plan_text",
+            "type": "text",
+            "instructions": "{amount} is replaced with the monthly amount. Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_pdp_single_payment_label",
+            "label": "Single payment label",
+            "name": "pdp_single_payment_label",
+            "type": "text",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_pdp_plan_1_months",
+            "label": "Plan 1: months",
+            "name": "pdp_plan_1_months",
+            "type": "number",
+            "instructions": "Set to 0 to hide this plan. Leave empty to use the default shown in the design.",
+            "required": 0,
+            "min": 0,
+            "max": 60,
+            "step": 1
+        },
+        {
+            "key": "field_plenty_pdp_plan_1_badge",
+            "label": "Plan 1: badge",
+            "name": "pdp_plan_1_badge",
+            "type": "text",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_pdp_plan_2_months",
+            "label": "Plan 2: months",
+            "name": "pdp_plan_2_months",
+            "type": "number",
+            "instructions": "Set to 0 to hide this plan. Leave empty to use the default shown in the design.",
+            "required": 0,
+            "min": 0,
+            "max": 60,
+            "step": 1
+        },
+        {
+            "key": "field_plenty_pdp_plan_2_badge",
+            "label": "Plan 2: badge",
+            "name": "pdp_plan_2_badge",
+            "type": "text",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_pdp_plan_3_months",
+            "label": "Plan 3: months",
+            "name": "pdp_plan_3_months",
+            "type": "number",
+            "instructions": "Set to 0 to hide this plan. Leave empty to use the default shown in the design.",
+            "required": 0,
+            "min": 0,
+            "max": 60,
+            "step": 1
+        },
+        {
+            "key": "field_plenty_pdp_plan_3_badge",
+            "label": "Plan 3: badge",
+            "name": "pdp_plan_3_badge",
+            "type": "text",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_pdp_plan_4_months",
+            "label": "Plan 4: months",
+            "name": "pdp_plan_4_months",
+            "type": "number",
+            "instructions": "Set to 0 to hide this plan. Leave empty to use the default shown in the design.",
+            "required": 0,
+            "min": 0,
+            "max": 60,
+            "step": 1
+        },
+        {
+            "key": "field_plenty_pdp_plan_4_badge",
+            "label": "Plan 4: badge",
+            "name": "pdp_plan_4_badge",
+            "type": "text",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_pdp_payment_1",
+            "label": "Payment logo 1",
+            "name": "pdp_payment_1",
+            "type": "image",
+            "instructions": "Shown 27px tall. Leave empty to use the design logo.",
+            "required": 0,
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "mime_types": ""
+        },
+        {
+            "key": "field_plenty_pdp_payment_2",
+            "label": "Payment logo 2",
+            "name": "pdp_payment_2",
+            "type": "image",
+            "instructions": "Shown 27px tall. Leave empty to use the design logo.",
+            "required": 0,
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "mime_types": ""
+        },
+        {
+            "key": "field_plenty_pdp_payment_3",
+            "label": "Payment logo 3",
+            "name": "pdp_payment_3",
+            "type": "image",
+            "instructions": "Shown 27px tall. Leave empty to use the design logo.",
+            "required": 0,
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "mime_types": ""
+        },
+        {
+            "key": "field_plenty_pdp_payment_4",
+            "label": "Payment logo 4",
+            "name": "pdp_payment_4",
+            "type": "image",
+            "instructions": "Shown 27px tall. Leave empty to use the design logo.",
+            "required": 0,
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "mime_types": ""
+        },
+        {
+            "key": "field_plenty_pdp_payment_5",
+            "label": "Payment logo 5",
+            "name": "pdp_payment_5",
+            "type": "image",
+            "instructions": "Shown 27px tall. Leave empty to use the design logo.",
+            "required": 0,
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "mime_types": ""
+        },
+        {
+            "key": "field_plenty_pdp_payments_link",
+            "label": "Payment methods link",
+            "name": "pdp_payments_link",
+            "type": "link",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0,
+            "return_format": "array"
+        },
+        {
+            "key": "field_plenty_pdp_specialist_image",
+            "label": "Sleep specialist photo",
+            "name": "pdp_specialist_image",
+            "type": "image",
+            "instructions": "Round, shown at 44×44. Leave empty to use the default shown in the design.",
+            "required": 0,
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "mime_types": ""
+        },
+        {
+            "key": "field_plenty_pdp_specialist_title",
+            "label": "Sleep specialist title",
+            "name": "pdp_specialist_title",
+            "type": "text",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_pdp_specialist_text",
+            "label": "Sleep specialist text",
+            "name": "pdp_specialist_text",
+            "type": "text",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_pdp_chat_label",
+            "label": "Chat button label",
+            "name": "pdp_chat_label",
+            "type": "text",
+            "instructions": "Links to the home page's support card 1 (WhatsApp). Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_pdp_call_label",
+            "label": "Call button label",
+            "name": "pdp_call_label",
+            "type": "text",
+            "instructions": "Links to the home page's support card 3 (phone). Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_pdp_video_label",
+            "label": "Video button label",
+            "name": "pdp_video_label",
+            "type": "text",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_tab_sections",
+            "label": "Sections",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_plenty_pdp_sensation_title",
+            "label": "Sensation title",
+            "name": "pdp_sensation_title",
+            "type": "text",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_story_1_eyebrow",
+            "label": "Row 1: eyebrow",
+            "name": "story_1_eyebrow",
+            "type": "text",
+            "instructions": "Optional small label above the title.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_story_1_title",
+            "label": "Row 1: title",
+            "name": "story_1_title",
+            "type": "text",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_story_1_text",
+            "label": "Row 1: text",
+            "name": "story_1_text",
+            "type": "textarea",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0,
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_plenty_story_1_button",
+            "label": "Row 1: button",
+            "name": "story_1_button",
+            "type": "link",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0,
+            "return_format": "array"
+        },
+        {
+            "key": "field_plenty_story_1_image",
+            "label": "Row 1: image",
+            "name": "story_1_image",
+            "type": "image",
+            "instructions": "Landscape, at least 1100×840. Leave empty to use the default shown in the design.",
+            "required": 0,
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "mime_types": ""
+        },
+        {
+            "key": "field_plenty_story_2_eyebrow",
+            "label": "Row 2: eyebrow",
+            "name": "story_2_eyebrow",
+            "type": "text",
+            "instructions": "Optional small label above the title.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_story_2_title",
+            "label": "Row 2: title",
+            "name": "story_2_title",
+            "type": "text",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_story_2_text",
+            "label": "Row 2: text",
+            "name": "story_2_text",
+            "type": "textarea",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0,
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_plenty_story_2_button",
+            "label": "Row 2: button",
+            "name": "story_2_button",
+            "type": "link",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0,
+            "return_format": "array"
+        },
+        {
+            "key": "field_plenty_story_2_image",
+            "label": "Row 2: image",
+            "name": "story_2_image",
+            "type": "image",
+            "instructions": "Landscape, at least 1100×840. Leave empty to use the default shown in the design.",
+            "required": 0,
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "mime_types": ""
+        },
+        {
+            "key": "field_plenty_story_3_eyebrow",
+            "label": "Row 3: eyebrow",
+            "name": "story_3_eyebrow",
+            "type": "text",
+            "instructions": "Optional small label above the title.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_story_3_title",
+            "label": "Row 3: title",
+            "name": "story_3_title",
+            "type": "text",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_story_3_text",
+            "label": "Row 3: text",
+            "name": "story_3_text",
+            "type": "textarea",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0,
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_plenty_story_3_button",
+            "label": "Row 3: button",
+            "name": "story_3_button",
+            "type": "link",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0,
+            "return_format": "array"
+        },
+        {
+            "key": "field_plenty_story_3_image",
+            "label": "Row 3: image",
+            "name": "story_3_image",
+            "type": "image",
+            "instructions": "Landscape, at least 1100×840. Leave empty to use the default shown in the design.",
+            "required": 0,
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "mime_types": ""
+        },
+        {
+            "key": "field_plenty_pdp_faq_title",
+            "label": "FAQ title",
+            "name": "pdp_faq_title",
+            "type": "text",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_pdp_faq_showing",
+            "label": "FAQ count text",
+            "name": "pdp_faq_showing",
+            "type": "text",
+            "instructions": "{shown} and {total} are replaced with numbers. Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_pdp_faq_show_all",
+            "label": "FAQ \"Show all\" label",
+            "name": "pdp_faq_show_all",
+            "type": "text",
+            "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_type",
+                "operator": "==",
+                "value": "front_page"
+            }
+        ]
+    ],
+    "menu_order": 20,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Content shared by every product page.",
+    "show_in_rest": 0,
+    "modified": 1793020581
+}

@@ -1,0 +1,444 @@
+{
+    "key": "group_plenty_product_page",
+    "title": "Product Page",
+    "fields": [
+        {
+            "key": "field_plenty_tab_overview",
+            "label": "Overview",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_plenty_product_tagline",
+            "label": "Tagline",
+            "name": "product_tagline",
+            "type": "text",
+            "instructions": "Short line under the title, e.g. \"Engineered for deep, restorative sleep\".",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_product_video_url",
+            "label": "Video URL",
+            "name": "product_video_url",
+            "type": "url",
+            "instructions": "Optional. Shows a \"Watch Video\" button on the main image.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_tab_sensation",
+            "label": "Sensation",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_plenty_product_firmness",
+            "label": "Firmness",
+            "name": "product_firmness",
+            "type": "select",
+            "instructions": "Position on the 4-step firmness scale. Leave empty to hide the scale.",
+            "required": 0,
+            "choices": {
+                "1": "1 – Soft",
+                "2": "2 – Medium",
+                "3": "3 – Medium-firm",
+                "4": "4 – Firm"
+            },
+            "allow_null": 1,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "default_value": false
+        },
+        {
+            "key": "field_plenty_product_sensation_1_icon",
+            "label": "Feature 1 icon",
+            "name": "product_sensation_1_icon",
+            "type": "image",
+            "instructions": "Shown at 60×60.",
+            "required": 0,
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "mime_types": ""
+        },
+        {
+            "key": "field_plenty_product_sensation_1_title",
+            "label": "Feature 1 title",
+            "name": "product_sensation_1_title",
+            "type": "text",
+            "instructions": "Leave empty to hide this feature.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_product_sensation_1_text",
+            "label": "Feature 1 text",
+            "name": "product_sensation_1_text",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_plenty_product_sensation_2_icon",
+            "label": "Feature 2 icon",
+            "name": "product_sensation_2_icon",
+            "type": "image",
+            "instructions": "Shown at 60×60.",
+            "required": 0,
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "mime_types": ""
+        },
+        {
+            "key": "field_plenty_product_sensation_2_title",
+            "label": "Feature 2 title",
+            "name": "product_sensation_2_title",
+            "type": "text",
+            "instructions": "Leave empty to hide this feature.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_product_sensation_2_text",
+            "label": "Feature 2 text",
+            "name": "product_sensation_2_text",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_plenty_product_sensation_3_icon",
+            "label": "Feature 3 icon",
+            "name": "product_sensation_3_icon",
+            "type": "image",
+            "instructions": "Shown at 60×60.",
+            "required": 0,
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "mime_types": ""
+        },
+        {
+            "key": "field_plenty_product_sensation_3_title",
+            "label": "Feature 3 title",
+            "name": "product_sensation_3_title",
+            "type": "text",
+            "instructions": "Leave empty to hide this feature.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_product_sensation_3_text",
+            "label": "Feature 3 text",
+            "name": "product_sensation_3_text",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_plenty_product_sensation_4_icon",
+            "label": "Feature 4 icon",
+            "name": "product_sensation_4_icon",
+            "type": "image",
+            "instructions": "Shown at 60×60.",
+            "required": 0,
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "mime_types": ""
+        },
+        {
+            "key": "field_plenty_product_sensation_4_title",
+            "label": "Feature 4 title",
+            "name": "product_sensation_4_title",
+            "type": "text",
+            "instructions": "Leave empty to hide this feature.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_product_sensation_4_text",
+            "label": "Feature 4 text",
+            "name": "product_sensation_4_text",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_plenty_product_sensation_5_icon",
+            "label": "Feature 5 icon",
+            "name": "product_sensation_5_icon",
+            "type": "image",
+            "instructions": "Shown at 60×60.",
+            "required": 0,
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "mime_types": ""
+        },
+        {
+            "key": "field_plenty_product_sensation_5_title",
+            "label": "Feature 5 title",
+            "name": "product_sensation_5_title",
+            "type": "text",
+            "instructions": "Leave empty to hide this feature.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_product_sensation_5_text",
+            "label": "Feature 5 text",
+            "name": "product_sensation_5_text",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_plenty_product_sensation_6_icon",
+            "label": "Feature 6 icon",
+            "name": "product_sensation_6_icon",
+            "type": "image",
+            "instructions": "Shown at 60×60.",
+            "required": 0,
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "mime_types": ""
+        },
+        {
+            "key": "field_plenty_product_sensation_6_title",
+            "label": "Feature 6 title",
+            "name": "product_sensation_6_title",
+            "type": "text",
+            "instructions": "Leave empty to hide this feature.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_product_sensation_6_text",
+            "label": "Feature 6 text",
+            "name": "product_sensation_6_text",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_plenty_tab_faq",
+            "label": "FAQ",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_plenty_product_faq_1_question",
+            "label": "Question 1",
+            "name": "product_faq_1_question",
+            "type": "text",
+            "instructions": "Questions without an answer are hidden.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_product_faq_1_answer",
+            "label": "Answer 1",
+            "name": "product_faq_1_answer",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_plenty_product_faq_2_question",
+            "label": "Question 2",
+            "name": "product_faq_2_question",
+            "type": "text",
+            "instructions": "",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_product_faq_2_answer",
+            "label": "Answer 2",
+            "name": "product_faq_2_answer",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_plenty_product_faq_3_question",
+            "label": "Question 3",
+            "name": "product_faq_3_question",
+            "type": "text",
+            "instructions": "",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_product_faq_3_answer",
+            "label": "Answer 3",
+            "name": "product_faq_3_answer",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_plenty_product_faq_4_question",
+            "label": "Question 4",
+            "name": "product_faq_4_question",
+            "type": "text",
+            "instructions": "",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_product_faq_4_answer",
+            "label": "Answer 4",
+            "name": "product_faq_4_answer",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_plenty_product_faq_5_question",
+            "label": "Question 5",
+            "name": "product_faq_5_question",
+            "type": "text",
+            "instructions": "",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_product_faq_5_answer",
+            "label": "Answer 5",
+            "name": "product_faq_5_answer",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_plenty_product_faq_6_question",
+            "label": "Question 6",
+            "name": "product_faq_6_question",
+            "type": "text",
+            "instructions": "",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_product_faq_6_answer",
+            "label": "Answer 6",
+            "name": "product_faq_6_answer",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_plenty_product_faq_7_question",
+            "label": "Question 7",
+            "name": "product_faq_7_question",
+            "type": "text",
+            "instructions": "",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_product_faq_7_answer",
+            "label": "Answer 7",
+            "name": "product_faq_7_answer",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_plenty_product_faq_8_question",
+            "label": "Question 8",
+            "name": "product_faq_8_question",
+            "type": "text",
+            "instructions": "",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_product_faq_8_answer",
+            "label": "Answer 8",
+            "name": "product_faq_8_answer",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_plenty_product_faq_9_question",
+            "label": "Question 9",
+            "name": "product_faq_9_question",
+            "type": "text",
+            "instructions": "",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_product_faq_9_answer",
+            "label": "Answer 9",
+            "name": "product_faq_9_answer",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_plenty_product_faq_10_question",
+            "label": "Question 10",
+            "name": "product_faq_10_question",
+            "type": "text",
+            "instructions": "",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_product_faq_10_answer",
+            "label": "Answer 10",
+            "name": "product_faq_10_answer",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "rows": 3,
+            "new_lines": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "product"
+            }
+        ]
+    ],
+    "menu_order": 1,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Product page content for this product: tagline, video, sensation and FAQ.",
+    "show_in_rest": 0,
+    "modified": 1793020581
+}

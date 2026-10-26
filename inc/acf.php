@@ -39,5 +39,22 @@ function plenty_field( string $selector, $fallback = '', $post_id = false ) {
 
 	$value = get_field( $selector, $post_id );
 
-	return ( null === $value || '' === $value || false === $value ) ? $fallback : $value;
+	return ( null === $value || '' === $value || false === $value || array() === $value ) ? $fallback : $value;
+}
+
+// Show the design default as the placeholder of empty theme fields, so editors see what renders.
+add_filter( 'acf/prepare_field', 'plenty_acf_default_placeholder' );
+
+function plenty_acf_default_placeholder( $field ) {
+	if ( ! is_array( $field ) || ! str_starts_with( (string) $field['key'], 'field_plenty_' ) ) {
+		return $field;
+	}
+
+	$default = plenty_content_defaults()[ $field['_name'] ?? $field['name'] ] ?? null;
+
+	if ( in_array( $field['type'], array( 'text', 'textarea', 'number' ), true ) && is_scalar( $default ) && empty( $field['placeholder'] ) ) {
+		$field['placeholder'] = (string) $default;
+	}
+
+	return $field;
 }

@@ -10,7 +10,7 @@ defined( 'ABSPATH' ) || exit;
 get_header();
 ?>
 
-<main id="main" class="mx-auto w-full max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+<main id="main" class="container-site py-12">
 	<?php
 	while ( have_posts() ) :
 		the_post();

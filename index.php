@@ -10,7 +10,7 @@ defined( 'ABSPATH' ) || exit;
 get_header();
 ?>
 
-<main id="main" class="mx-auto w-full max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+<main id="main" class="container-site py-12">
 	<?php if ( is_home() && ! is_front_page() ) : ?>
 		<h1 class="mb-10 text-3xl font-bold tracking-tight"><?php single_post_title(); ?></h1>
 	<?php elseif ( is_archive() ) : ?>

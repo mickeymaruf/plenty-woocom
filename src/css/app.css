@@ -10,10 +10,31 @@
 @source "../../inc";
 @source "../../template-parts";
 @source "../../woocommerce";
-@source "../js";
+@source "../../assets/js";
 
+/* Design tokens from the Figma file (Plenty Website Design). */
 @theme {
-	--font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+	--font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+	--font-helvetica: Helvetica, Arial, sans-serif;
+	--font-montserrat: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+
+	--color-navy: #092d47;
+	--color-ink: #101828;
+	--color-muted: #6a7282;
+	--color-subtle: #99a1af;
+	--color-body: #545e6e;
+	--color-indigo: #3730a3;
+	--color-surface: #f5f7fc;
+	--color-surface-alt: #f6f7fa;
+}
+
+/* Page container: 1240px content at 1440px (100px gutters); `narrow` matches the 160px-gutter sections. */
+@utility container-site {
+	@apply mx-auto w-full max-w-[1440px] px-4 sm:px-6 lg:px-[100px];
+}
+
+@utility container-narrow {
+	@apply mx-auto w-full max-w-[1440px] px-4 sm:px-6 lg:px-[100px] xl:px-[160px];
 }
 
 /* Basic typography for editor content (the_content), which preflight otherwise strips. */
@@ -41,4 +62,131 @@
 	.woocommerce-products-header__title {
 		@apply mb-8 text-4xl font-bold tracking-tight;
 	}
+
+	/* Logo artwork is an alpha mask filled with currentColor (same construction as the Figma logo). */
+	.plenty-logo {
+		@apply block h-[68px] w-[158px] bg-current;
+		mask-image: var(--logo-mask);
+		mask-size: 158px 157.935px;
+		mask-position: 0 -43.58px;
+		mask-repeat: no-repeat;
+	}
+}
+
+/*
+ * woocommerce-layout.css sets `.woocommerce img { height: auto }` unlayered, which beats every
+ * Tailwind height utility on WooCommerce pages. Roll that back to the Tailwind layers.
+ */
+body:is(.woocommerce, .woocommerce-page) img {
+	height: revert-layer;
+}
+
+/*
+ * WooCommerce add-to-cart form in the product buy panel (template-parts/product/buy-panel.php).
+ * Unlayered and prefixed with `body.single-product div.plenty-buy` so it outranks WooCommerce's
+ * own unlayered `.woocommerce div.product form.cart …` rules.
+ */
+body.single-product div.plenty-buy form.cart {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	margin: 0;
+}
+
+body.single-product div.plenty-buy form.cart::before,
+body.single-product div.plenty-buy form.cart::after {
+	display: none;
+}
+
+/* The design has no quantity selector; the hidden input still submits 1. */
+body.single-product div.plenty-buy form.cart div.quantity {
+	display: none;
+}
+
+body.single-product div.plenty-buy form.cart .single_add_to_cart_button {
+	display: flex;
+	float: none;
+	width: 100%;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	margin: 0;
+	padding: 16px;
+	border: 0;
+	border-radius: 999px;
+	background: var(--color-navy);
+	color: #fff;
+	font-family: var(--font-sans);
+	font-size: 14px;
+	font-weight: 700;
+	line-height: 20px;
+	letter-spacing: 0.35px;
+	transition: background-color 0.15s;
+}
+
+body.single-product div.plenty-buy form.cart .single_add_to_cart_button::before {
+	content: "";
+	width: 16px;
+	height: 16px;
+	background: url("../assets/images/icon-cart-16.svg") center / contain no-repeat;
+}
+
+body.single-product div.plenty-buy form.cart .single_add_to_cart_button:hover {
+	background: var(--color-ink);
+	color: #fff;
+}
+
+body.single-product div.plenty-buy form.cart .single_add_to_cart_button.disabled,
+body.single-product div.plenty-buy form.cart .single_add_to_cart_button:disabled {
+	opacity: 0.5;
+	background: var(--color-navy);
+	cursor: not-allowed;
+}
+
+/* Variable products: attribute dropdowns. */
+body.single-product div.plenty-buy form.cart .variations {
+	margin: 0;
+	font-size: 14px;
+}
+
+body.single-product div.plenty-buy form.cart .variations th,
+body.single-product div.plenty-buy form.cart .variations td {
+	display: block;
+	padding: 0 0 4px;
+	text-align: left;
+	line-height: 20px;
+}
+
+body.single-product div.plenty-buy form.cart .variations label {
+	font-weight: 600;
+	color: var(--color-ink);
+}
+
+body.single-product div.plenty-buy form.cart .variations select {
+	width: 100%;
+	min-width: 0;
+	margin: 0;
+	padding: 10px 40px 10px 14px;
+	border: 1px solid #e5e7eb;
+	border-radius: 12px;
+	background-color: #fff;
+	font-size: 14px;
+	line-height: 20px;
+}
+
+body.single-product div.plenty-buy form.cart .reset_variations {
+	display: inline-block;
+	margin-top: 4px;
+	font-size: 12px;
+	color: var(--color-muted);
+}
+
+body.single-product div.plenty-buy .stock {
+	font-size: 14px;
+	font-weight: 600;
+	color: var(--color-ink);
+}
+
+body.single-product div.plenty-buy .stock.out-of-stock {
+	color: #cc1818;
 }
