@@ -36,4 +36,9 @@
 	.prose-content ol {
 		@apply list-decimal pl-6;
 	}
+
+	/* WooCommerce archive (shop, category) title. */
+	.woocommerce-products-header__title {
+		@apply mb-8 text-4xl font-bold tracking-tight;
+	}
 }

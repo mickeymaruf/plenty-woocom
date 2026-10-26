@@ -30,7 +30,7 @@ $cta_url       = plenty_field( 'hero_cta_url', function_exists( 'wc_get_page_per
 		</div>
 	</section>
 
-	<?php if ( function_exists( 'wc_get_products' ) ) : ?>
+	<?php if ( function_exists( 'wc_get_featured_product_ids' ) && wc_get_featured_product_ids() ) : ?>
 		<section class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
 			<h2 class="mb-8 text-2xl font-bold tracking-tight"><?php esc_html_e( 'Featured products', 'plenty' ); ?></h2>
 			<?php echo do_shortcode( '[products limit="4" columns="4" visibility="featured"]' ); ?>
@@ -38,16 +38,19 @@ $cta_url       = plenty_field( 'hero_cta_url', function_exists( 'wc_get_page_per
 	<?php endif; ?>
 
 	<?php
-	while ( have_posts() ) :
-		the_post();
-		if ( get_the_content() ) :
-			?>
-			<section class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-				<?php the_content(); ?>
-			</section>
-			<?php
-		endif;
-	endwhile;
+	// Only a static front page has editor content; when the front page shows latest posts, skip the loop.
+	if ( is_page() ) :
+		while ( have_posts() ) :
+			the_post();
+			if ( get_the_content() ) :
+				?>
+				<section class="prose-content mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+					<?php the_content(); ?>
+				</section>
+				<?php
+			endif;
+		endwhile;
+	endif;
 	?>
 </main>
 
