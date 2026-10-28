@@ -15,9 +15,17 @@ Custom **classic** (PHP template, non-block) WordPress theme for a WooCommerce s
 npm install      # once
 npm run dev      # watch src/css/app.css -> dist/app.css
 npm run build    # minified production build
+npm run deploy   # build, then upload the theme to production (bin/deploy.mjs)
+npm run deploy -- --rollback   # swap back to the previously deployed version
 ```
 
 `dist/` is gitignored — run `npm run build` before deploying. `inc/enqueue.php` skips the stylesheet if `dist/app.css` is missing, and cache-busts with `filemtime`.
+
+## Production
+
+- Vultr server `64.176.26.129` (Santiago) running CloudPanel; site user `plenty`, site root `/home/plenty/htdocs/64-176-26-129.sslip.io` (temporary sslip.io domain until the real one exists). PHP 8.3, cron runs `wp-cron.php` every 5 min (`DISABLE_WP_CRON`).
+- **Code goes up, content stays there.** Theme changes are made locally and shipped with `npm run deploy`; content, products, menus and plugins are managed in the live wp-admin. Never import the Local database into production once the site has real content or orders.
+- `bin/deploy.mjs` streams the theme over `ssh` with `tar` (skipping `src`, `node_modules`, `.git`, `bin`, package files) into `themes/.plenty-new`, then swaps it in and keeps the old one as `themes/.plenty-prev`. Target is overridable with `DEPLOY_HOST` / `DEPLOY_THEMES_DIR`. After deploying `acf-json/` changes, click "Sync available" in WP Admin → ACF.
 
 ## Design
 
