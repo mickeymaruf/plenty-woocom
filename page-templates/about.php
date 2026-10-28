@@ -2,8 +2,8 @@
 /**
  * Template Name: About
  *
- * About page (Figma node 55:1331). The intro, values and FAQ are this page's "About Page"
- * fields; the story rows, product grid and "Sleep Specialists" are the shared sections from the
+ * About page (Figma node 55:1331); also used for the Hotels page (/hotels/, Figma node 76:153,
+ * same layout). The intro, values and FAQ are this page's own "About Page" fields; the story rows, product grid and "Sleep Specialists" are the shared sections from the
  * product and home pages (same content).
  *
  * @package Plenty
@@ -27,6 +27,7 @@ $page_id = get_queried_object_id();
 		array(
 			'tabs'  => false,
 			'limit' => 3,
+			'class' => 'pb-[50px] lg:py-[100px]', // On mobile the story rows above already leave enough space.
 		)
 	);
 	get_template_part(

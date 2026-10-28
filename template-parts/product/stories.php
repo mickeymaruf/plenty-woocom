@@ -22,7 +22,7 @@ if ( ! $rows ) {
 		$eyebrow = plenty_content( "story_{$i}_eyebrow" );
 		$button  = plenty_content( "story_{$i}_button" );
 		?>
-		<div class="flex flex-col gap-10 py-16 lg:flex-row lg:items-center lg:gap-[100px] lg:px-[60px] <?php echo $index < count( $rows ) - 1 ? 'border-b border-[#f3f4f6]' : ''; ?>">
+		<div class="flex flex-col gap-10 pb-16 lg:flex-row lg:pt-16 lg:items-center lg:gap-[100px] lg:px-[60px] <?php echo $index < count( $rows ) - 1 ? 'border-b border-[#f3f4f6]' : 'max-lg:pb-0'; // The next section brings its own spacing. ?>">
 			<div class="h-[300px] w-full shrink-0 overflow-hidden bg-[#f9fafb] sm:h-[420px] lg:w-[548px] <?php echo 1 === $index % 2 ? 'lg:order-last' : ''; ?>">
 				<?php echo plenty_content_image( "story_{$i}_image", 'large', array( 'class' => 'size-full object-cover' ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
 			</div>

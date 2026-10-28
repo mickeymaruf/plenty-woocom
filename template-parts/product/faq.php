@@ -1,8 +1,8 @@
 <?php
 /**
  * FAQ accordion (up to 10 questions): per product on the product page, per page on the About
- * page. The first 8 show; "Show all" reveals the rest (assets/js/theme.js). Hidden when there
- * are no answered questions.
+ * page. The first 8 show; "Show all" reveals the rest. One question is open at a time (the shared
+ * `name`; theme.js takes over to animate opening and closing). Hidden when there are no answered questions.
  *
  * @package Plenty
  *
@@ -38,12 +38,14 @@ if ( ! $items ) {
 
 		<div class="mt-10">
 			<?php foreach ( $items as $index => [ $question, $answer ] ) : ?>
-				<details class="group border-b border-[#d1cfd7]" <?php echo $index >= $visible ? 'hidden data-faq-extra' : ''; ?>>
+				<details class="group border-b border-[#d1cfd7]" name="faq-<?php echo (int) $post_id; ?>" data-faq-item <?php echo $index >= $visible ? 'hidden data-faq-extra' : ''; ?>>
 					<summary class="flex min-h-16 cursor-pointer list-none items-center justify-between gap-6 py-4 text-[18px] leading-[25.2px] text-[#181831] [&::-webkit-details-marker]:hidden">
 						<?php echo esc_html( $question ); ?>
-						<svg class="shrink-0 transition-transform group-open:rotate-45" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M8 2v12M2 8h12"/></svg>
+						<svg class="shrink-0 transition-[rotate] duration-300 ease-out group-open:rotate-45 group-data-closing:rotate-0" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M8 2v12M2 8h12"/></svg>
 					</summary>
-					<div class="max-w-3xl pb-6 text-[16px] leading-[1.6] text-muted [&_a]:underline [&_p+p]:mt-3"><?php echo wp_kses_post( wpautop( $answer ) ); ?></div>
+					<div class="overflow-hidden" data-faq-panel>
+						<div class="max-w-3xl pb-6 text-[16px] leading-[1.6] text-muted [&_a]:underline [&_p+p]:mt-3"><?php echo wp_kses_post( wpautop( $answer ) ); ?></div>
+					</div>
 				</details>
 			<?php endforeach; ?>
 		</div>

@@ -11,7 +11,7 @@ defined( 'ABSPATH' ) || exit;
 
 $page_id = (int) $args['post_id'];
 ?>
-<section class="container-site flex flex-col gap-10 pb-[100px] pt-5 lg:gap-[60px]">
+<section class="container-site flex flex-col gap-10 pb-[50px] pt-5 lg:gap-[60px] lg:pb-[100px]">
 	<h2 class="max-w-[507px] text-[36px] font-semibold capitalize leading-[1.2] text-[#0e0e0e] sm:text-[48px]"><?php echo esc_html( plenty_content( 'about_values_title', $page_id ) ); ?></h2>
 
 	<ul class="grid gap-10 md:grid-cols-3 md:gap-[30px]">

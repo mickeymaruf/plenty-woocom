@@ -9,8 +9,9 @@
  * @package Plenty
  *
  * @var array $args {
- *     @type bool $tabs  Show the category tabs. Default true.
- *     @type int  $limit Number of products. Default: the "Number of products" field.
+ *     @type bool   $tabs  Show the category tabs. Default true.
+ *     @type int    $limit Number of products. Default: the "Number of products" field.
+ *     @type string $class Section padding. Default half top padding (the home section above adds the other half).
  * }
  */
 
@@ -44,7 +45,7 @@ $compare = plenty_content( 'products_compare' );
 // (and drops aria-pressed:bg-navy, which draws the active tab until then).
 $tab     = 'relative rounded-full px-4 py-2 text-[14px] font-medium leading-5 tracking-[-0.1504px] text-[#6b7280] transition-colors duration-300 hover:text-navy aria-pressed:bg-navy aria-pressed:text-white';
 ?>
-<section class="container-site flex flex-col items-center gap-8 py-[100px]" data-product-filter>
+<section class="container-site flex flex-col items-center gap-8 <?php echo esc_attr( $args['class'] ?? 'pt-[50px] pb-[50px] lg:pb-[100px]' ); ?>" data-product-filter>
 	<div class="flex w-full flex-col items-center gap-8">
 		<h2 class="text-center text-[32px] font-semibold capitalize leading-[1.2] text-ink sm:text-[48px]"><?php echo esc_html( plenty_content( 'products_title' ) ); ?></h2>
 

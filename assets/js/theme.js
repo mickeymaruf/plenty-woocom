@@ -71,8 +71,47 @@ document.querySelectorAll( '[data-gallery]' ).forEach( ( gallery ) => {
 	} );
 } );
 
-// Product FAQ: "Show all" reveals questions beyond the first eight.
+// FAQ (product and About pages): "Show all" reveals questions beyond the first eight; one question
+// open at a time, answers slide open and closed. data-closing turns the icon back while closing.
 document.querySelectorAll( '[data-faq]' ).forEach( ( faq ) => {
+	const items = faq.querySelectorAll( '[data-faq-item]' );
+	const duration = window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches ? 0 : 300;
+	const animations = new WeakMap();
+
+	const toggle = ( item, open ) => {
+		const panel = item.querySelector( '[data-faq-panel]' );
+		const from = item.open ? panel.getBoundingClientRect().height : 0; // Mid-animation height when interrupted.
+
+		animations.get( item )?.cancel();
+		item.open = true;
+		item.toggleAttribute( 'data-closing', ! open );
+
+		const animation = panel.animate( { height: [ `${ from }px`, open ? `${ panel.scrollHeight }px` : '0px' ] }, { duration, easing: 'ease-out' } );
+		animations.set( item, animation );
+		animation.onfinish = () => {
+			animations.delete( item );
+			if ( ! open ) {
+				item.open = false;
+				item.removeAttribute( 'data-closing' );
+			}
+		};
+	};
+
+	items.forEach( ( item ) => {
+		// The shared name makes the browser close the others instantly; the script closes them animated instead.
+		item.removeAttribute( 'name' );
+
+		item.querySelector( 'summary' ).addEventListener( 'click', ( event ) => {
+			event.preventDefault();
+			const open = ! item.open || item.hasAttribute( 'data-closing' );
+
+			if ( open ) {
+				items.forEach( ( other ) => other !== item && other.open && ! other.hasAttribute( 'data-closing' ) && toggle( other, false ) );
+			}
+			toggle( item, open );
+		} );
+	} );
+
 	faq.querySelector( '[data-faq-show-all]' )?.addEventListener( 'click', () => {
 		faq.querySelectorAll( '[data-faq-extra]' ).forEach( ( item ) => ( item.hidden = false ) );
 		faq.querySelector( '[data-faq-more]' ).remove();

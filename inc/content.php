@@ -21,7 +21,9 @@ function plenty_content_defaults(): array {
 		return $defaults;
 	}
 
-	$shop = function_exists( 'wc_get_page_permalink' ) ? wc_get_page_permalink( 'shop' ) : home_url( '/' );
+	$shop   = function_exists( 'wc_get_page_permalink' ) ? wc_get_page_permalink( 'shop' ) : home_url( '/' );
+	$hotels = get_page_by_path( 'hotels' ); // Hotels page (About template), if one exists.
+	$hotels = $hotels && 'publish' === $hotels->post_status ? get_permalink( $hotels ) : '#';
 
 	$defaults = array(
 		// Hero.
@@ -60,7 +62,7 @@ function plenty_content_defaults(): array {
 		'hotel_bullet_1'         => 'Commercial-grade durability',
 		'hotel_bullet_2'         => 'Volume pricing for hotels and rentals',
 		'hotel_bullet_3'         => 'Dedicated account support',
-		'hotel_button'           => plenty_default_link( 'Explore Hotel Line' ),
+		'hotel_button'           => plenty_default_link( 'Explore Hotel Line', $hotels ),
 
 		// Factory.
 		'factory_eyebrow'        => 'Made by us',

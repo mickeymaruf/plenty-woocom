@@ -58,7 +58,8 @@ $footer_label = 'font-helvetica text-[16px] tracking-[0.1501px] uppercase';
 		<div class="grid grid-cols-2 gap-x-[60px] gap-y-10 sm:flex sm:px-2.5">
 			<?php foreach ( array( 'footer_1', 'footer_2', 'footer_3' ) as $location ) : ?>
 				<?php if ( has_nav_menu( $location ) ) : ?>
-					<nav class="flex flex-col gap-4" aria-label="<?php echo esc_attr( wp_get_nav_menu_name( $location ) ); ?>">
+					<?php // Mobile 2-column grid: column 2 spans both rows, so column 3 sits right under column 1. ?>
+					<nav class="flex flex-col gap-4 <?php echo 'footer_2' === $location ? 'row-span-2' : ''; ?>" aria-label="<?php echo esc_attr( wp_get_nav_menu_name( $location ) ); ?>">
 						<p class="text-[22px] tracking-[0.1501px]"><?php echo esc_html( wp_get_nav_menu_name( $location ) ); ?></p>
 						<?php
 						wp_nav_menu(

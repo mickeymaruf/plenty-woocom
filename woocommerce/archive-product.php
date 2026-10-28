@@ -43,7 +43,7 @@ $pagination = paginate_links( // Not $pages: the_post() overwrites that WordPres
 );
 ?>
 <main id="main">
-	<section class="container-site flex flex-col items-center gap-8 py-[100px]">
+	<section class="container-site flex flex-col items-center gap-8 pt-[50px] pb-[50px] lg:pb-[100px]">
 		<div class="flex w-full flex-col items-center gap-8">
 			<h1 class="text-center text-[32px] font-semibold capitalize leading-[1.2] text-ink sm:text-[48px]"><?php echo esc_html( $title ); ?></h1>
 

@@ -29,7 +29,7 @@ npm run deploy -- --rollback   # swap back to the previously deployed version
 
 ## Design
 
-The layout is built from the Figma file **Plenty Website Design** (`sR6A87o4eDsGX9DwuOH9JB`), home page frame node `10:89` and product page frame node `31:7786`, cart drawer node `33:9628`, Contact `53:86`, About `55:1331`, shop page `27:5519`, designed at 1440px wide. Colours, fonts and spacing are hard-coded from the design (tokens in `src/css/app.css` `@theme`); merchants edit text and images only, not styles.
+The layout is built from the Figma file **Plenty Website Design** (`sR6A87o4eDsGX9DwuOH9JB`), home page frame node `10:89` and product page frame node `31:7786`, cart drawer node `33:9628`, Contact `53:86`, About `55:1331`, shop page `27:5519`, Hotels `76:153` (a copy of the About layout), designed at 1440px wide. Colours, fonts and spacing are hard-coded from the design (tokens in `src/css/app.css` `@theme`); merchants edit text and images only, not styles.
 
 ## Layout
 
@@ -87,6 +87,7 @@ woocommerce/archive-product.php Shop page + product category/tag archives (headi
   - Per product: `group_plenty_product_card` ("Home Page Card": card text + three feature lines; icons fixed per position: bed, shield, snowflake) and `group_plenty_product_page` ("Product Page": tagline, video URL, firmness 1–4, six Sensation features, ten FAQ items). Product sections without data are hidden.
   - Page templates have their own groups, attached by template: `group_plenty_contact_page` (Contact: intro, form labels, recipient email) and `group_plenty_about_page` (About: intro, stats, values, FAQ). Read them with `plenty_content( 'name', $page_id )` / `plenty_content_image( ..., $page_id )` — the optional post ID defaults to the front page.
   - The About page reuses the story rows (Product Page Settings), the product grid without tabs and "Sleep Specialists" (Home Page); `template-parts/product/faq.php` takes `post_id` + `prefix` (`page_faq`) for page FAQs. Contact social links are the Site Settings Facebook/Instagram/X URLs.
+  - The Hotels page (`/hotels/`, slug `hotels`) is a page using the About template, so its intro, stats, values and FAQ are its own fields. The home "Explore Hotel Line" button defaults to that page when it is published.
   - The product page reuses home content: benefits under the gallery are home benefit cards 2–4; the Chat/Call buttons use the home support cards 1 and 3 links; the support section is the same template part.
   - Header and footer link columns are WordPress menus (`primary`, `footer_1`–`footer_3`); a footer column's heading is the menu's name. `bin/seed-menus.php` creates the design's menus where a location is still empty — header (Colchones, Quienes Somos, Contacto) and the footer columns Habitación, Ayuda, Legales; links without a published target page (Shop, About/Contact template pages, privacy, terms, blog) are `#`.
   - The header logo uses the Customizer logo if set, otherwise `assets/images/logo.png` (Figma node 6:52 exported at 4×, white made transparent; an `<img>` is sharper than the CSS-mask `plenty_logo()`, which the footer still uses in white).

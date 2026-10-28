@@ -14,7 +14,7 @@ get_header();
 ?>
 
 <main id="main">
-	<section class="container-site">
+	<section class="container-site pb-[50px]">
 		<?php get_template_part( 'template-parts/home/hero' ); ?>
 		<?php get_template_part( 'template-parts/home/features' ); ?>
 	</section>
