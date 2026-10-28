@@ -26,6 +26,32 @@ function plenty_wc_wrapper_end(): void {
 }
 
 /**
+ * Category filter tabs for the product grids (home section and shop page): the categories picked
+ * in Home Page → Products, or every top-level category with products.
+ *
+ * @return WP_Term[]
+ */
+function plenty_product_filter_categories(): array {
+	$category_ids = array_filter( array_map( 'intval', (array) plenty_content( 'products_categories' ) ) );
+	$categories   = get_terms(
+		array(
+			'taxonomy'   => 'product_cat',
+			'hide_empty' => true,
+			'include'    => $category_ids,
+			'orderby'    => $category_ids ? 'include' : 'menu_order',
+			'parent'     => $category_ids ? '' : 0,
+			'exclude'    => $category_ids ? array() : array( (int) get_option( 'default_product_cat' ) ),
+		)
+	);
+
+	return is_wp_error( $categories ) ? array() : $categories;
+}
+
+// The shop page shows neither the result count nor the sorting dropdown (not in the design).
+remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
+remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
+
+/**
  * Cart link (shopping bag icon) with item count, used in the header.
  */
 function plenty_cart_link(): void {

@@ -13,16 +13,43 @@ document.querySelectorAll( '[data-nav-toggle]' ).forEach( ( button ) => {
 	} );
 } );
 
-// Home product grid: filter cards by category tab.
+// Home product grid: filter cards by category tab; a navy pill slides behind the active tab.
 document.querySelectorAll( '[data-product-filter]' ).forEach( ( section ) => {
 	const tabs = section.querySelectorAll( '[data-filter]' );
 	const cards = section.querySelectorAll( '[data-categories]' );
+	const pill = section.querySelector( '[data-filter-pill]' );
+
+	const movePill = () => {
+		const active = section.querySelector( '[data-filter][aria-pressed="true"]' );
+
+		if ( pill && active ) {
+			// Sub-pixel rects (offsetLeft/offsetWidth round); relative to the bar's padding box, scroll included.
+			const bar = pill.parentElement;
+			const tab = active.getBoundingClientRect();
+			const left = tab.left - bar.getBoundingClientRect().left - bar.clientLeft + bar.scrollLeft;
+
+			pill.style.width = `${ tab.width }px`;
+			pill.style.transform = `translateX(${ left }px)`;
+		}
+	};
+
+	if ( pill ) {
+		movePill();
+		pill.getBoundingClientRect(); // Commit the first position before transitions are switched on.
+		pill.dataset.ready = '';
+		tabs.forEach( ( tab ) => tab.classList.remove( 'aria-pressed:bg-navy' ) );
+
+		// Tab widths change when the web font loads or the label wraps.
+		const observer = new ResizeObserver( movePill );
+		tabs.forEach( ( tab ) => observer.observe( tab ) );
+	}
 
 	tabs.forEach( ( tab ) => {
 		tab.addEventListener( 'click', () => {
 			const filter = tab.dataset.filter;
 
 			tabs.forEach( ( other ) => other.setAttribute( 'aria-pressed', String( other === tab ) ) );
+			movePill();
 			cards.forEach( ( card ) => {
 				card.hidden = filter !== 'all' && ! card.dataset.categories.split( ' ' ).includes( filter );
 			} );

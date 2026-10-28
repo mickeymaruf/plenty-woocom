@@ -24,7 +24,8 @@ defined( 'ABSPATH' ) || exit;
 			<?php if ( has_custom_logo() ) : ?>
 				<?php echo wp_get_attachment_image( get_theme_mod( 'custom_logo' ), 'full', false, array( 'class' => 'h-[68px] w-auto' ) ); ?>
 			<?php else : ?>
-				<?php plenty_logo(); ?>
+				<?php // Figma 4x export (632×272), sharper than the CSS-mask wordmark at this size. ?>
+				<?php echo plenty_asset_img( 'logo.png', 158, 68, array( 'class' => 'block h-[68px] w-auto', 'loading' => 'eager' ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
 			<?php endif; ?>
 			<span class="sr-only"><?php bloginfo( 'name' ); ?></span>
 		</a>

@@ -37,7 +37,7 @@ function plenty_setup(): void {
 			'thumbnail_image_width' => 600,
 			'single_image_width'    => 900,
 			'product_grid'          => array(
-				'default_rows'    => 3,
+				'default_rows'    => 4,
 				'min_rows'        => 1,
 				'default_columns' => 3,
 				'min_columns'     => 1,

@@ -22,17 +22,7 @@ if ( ! function_exists( 'wc_get_products' ) ) {
 
 $show_tabs    = $args['tabs'] ?? true;
 $category_ids = array_filter( array_map( 'intval', (array) plenty_content( 'products_categories' ) ) );
-$categories   = get_terms(
-	array(
-		'taxonomy'   => 'product_cat',
-		'hide_empty' => true,
-		'include'    => $category_ids,
-		'orderby'    => $category_ids ? 'include' : 'menu_order',
-		'parent'     => $category_ids ? '' : 0,
-		'exclude'    => $category_ids ? array() : array( (int) get_option( 'default_product_cat' ) ),
-	)
-);
-$categories   = is_wp_error( $categories ) ? array() : $categories;
+$categories   = plenty_product_filter_categories();
 
 $products = wc_get_products(
 	array(
@@ -50,14 +40,17 @@ if ( ! $products ) {
 }
 
 $compare = plenty_content( 'products_compare' );
-$tab     = 'rounded-full py-2 text-[14px] font-medium leading-5 tracking-[-0.1504px] text-[#6b7280] transition hover:text-navy aria-pressed:bg-navy aria-pressed:px-6 aria-pressed:text-white';
+// Same padding on every tab so labels don't move; theme.js slides [data-filter-pill] behind the active one
+// (and drops aria-pressed:bg-navy, which draws the active tab until then).
+$tab     = 'relative rounded-full px-4 py-2 text-[14px] font-medium leading-5 tracking-[-0.1504px] text-[#6b7280] transition-colors duration-300 hover:text-navy aria-pressed:bg-navy aria-pressed:text-white';
 ?>
 <section class="container-site flex flex-col items-center gap-8 py-[100px]" data-product-filter>
 	<div class="flex w-full flex-col items-center gap-8">
 		<h2 class="text-center text-[32px] font-semibold capitalize leading-[1.2] text-ink sm:text-[48px]"><?php echo esc_html( plenty_content( 'products_title' ) ); ?></h2>
 
 		<?php if ( $show_tabs && count( $categories ) > 1 ) : ?>
-			<div class="flex max-w-full items-center gap-4 overflow-x-auto rounded-full border border-[#e5e7eb] bg-white py-[5px] pl-[5px] pr-[25px]" role="group" aria-label="<?php esc_attr_e( 'Filter mattresses', 'plenty' ); ?>">
+			<div class="relative flex max-w-full items-center overflow-x-auto rounded-full border border-[#e5e7eb] bg-white p-[5px]" role="group" aria-label="<?php esc_attr_e( 'Filter mattresses', 'plenty' ); ?>">
+				<span class="pointer-events-none absolute left-0 top-[5px] h-9 rounded-full bg-navy opacity-0 data-ready:opacity-100 data-ready:motion-safe:transition-[transform,width] data-ready:motion-safe:duration-300 data-ready:motion-safe:ease-out" data-filter-pill aria-hidden="true"></span>
 				<button type="button" class="<?php echo esc_attr( $tab ); ?> shrink-0" data-filter="all" aria-pressed="true"><?php echo esc_html( plenty_content( 'products_all_label' ) ); ?></button>
 				<?php foreach ( $categories as $category ) : ?>
 					<button type="button" class="<?php echo esc_attr( $tab ); ?> shrink-0" data-filter="<?php echo esc_attr( $category->slug ); ?>" aria-pressed="false"><?php echo esc_html( $category->name ); ?></button>
