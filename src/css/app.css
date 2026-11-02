@@ -196,3 +196,57 @@ body.single-product div.plenty-buy .stock {
 body.single-product div.plenty-buy .stock.out-of-stock {
 	color: #cc1818;
 }
+
+/*
+ * Classic checkout (inc/woocommerce.php): customer details and payment on the left, the order
+ * summary on the right, sticky while scrolling; on phones the summary comes before payment.
+ * Unlayered, like the rest of the WooCommerce overrides.
+ */
+body.woocommerce-checkout form.checkout {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr);
+	grid-template-areas: "details" "summary" "payment";
+	gap: 32px;
+}
+
+body.woocommerce-checkout form.checkout::before,
+body.woocommerce-checkout form.checkout::after {
+	display: none;
+}
+
+body.woocommerce-checkout form.checkout #customer_details {
+	grid-area: details;
+}
+
+body.woocommerce-checkout form.checkout .plenty-checkout-summary {
+	grid-area: summary;
+	align-self: start;
+}
+
+body.woocommerce-checkout form.checkout #payment {
+	grid-area: payment;
+}
+
+/* Billing and shipping/notes stacked in the left column (WooCommerce floats them side by side). */
+body.woocommerce-checkout form.checkout #customer_details .col-1,
+body.woocommerce-checkout form.checkout #customer_details .col-2 {
+	float: none;
+	width: 100%;
+}
+
+@media (min-width: 1024px) {
+	body.woocommerce-checkout form.checkout {
+		grid-template-columns: minmax(0, 1fr) 420px;
+		grid-template-areas: "details summary" "payment summary";
+		column-gap: 60px;
+	}
+
+	body.woocommerce-checkout form.checkout .plenty-checkout-summary {
+		position: sticky;
+		top: 24px;
+	}
+
+	body.admin-bar.woocommerce-checkout form.checkout .plenty-checkout-summary {
+		top: 56px;
+	}
+}

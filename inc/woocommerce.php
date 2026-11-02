@@ -114,6 +114,22 @@ function plenty_variation_is_active( bool $active, $variation ): bool {
 	return $active && $variation->is_in_stock();
 }
 
+// Checkout (classic): customer details and payment on the left, the order summary ("Your order" +
+// review table) wrapped on the right; laid out in src/css/app.css. WooCommerce refreshes both parts
+// by selector (update_order_review fragments), so payment can live outside #order_review.
+remove_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
+add_action( 'woocommerce_checkout_after_customer_details', 'woocommerce_checkout_payment' );
+add_action( 'woocommerce_checkout_before_order_review_heading', 'plenty_checkout_summary_start' );
+add_action( 'woocommerce_checkout_after_order_review', 'plenty_checkout_summary_end' );
+
+function plenty_checkout_summary_start(): void {
+	echo '<div class="plenty-checkout-summary">';
+}
+
+function plenty_checkout_summary_end(): void {
+	echo '</div>';
+}
+
 // Product page button label (editable in Product Page Settings); external products keep their own label.
 add_filter( 'woocommerce_product_single_add_to_cart_text', 'plenty_single_add_to_cart_text', 10, 2 );
 
