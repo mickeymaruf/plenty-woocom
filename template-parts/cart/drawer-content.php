@@ -12,6 +12,7 @@ $cart     = WC()->cart;
 $count    = $cart ? $cart->get_cart_contents_count() : 0;
 $items    = $cart ? $cart->get_cart() : array();
 $shipping = $items ? plenty_cart_free_shipping() : null;
+$quoted   = plenty_shipping_is_quoted(); // "A coordinar" shipping replaces the free-shipping banner and value.
 $muted    = 'flex items-start justify-between text-[12px] leading-4 text-muted';
 ?>
 <div class="flex min-h-0 flex-1 flex-col" data-cart-drawer-content>
@@ -43,17 +44,21 @@ $muted    = 'flex items-start justify-between text-[12px] leading-4 text-muted';
 		</div>
 	<?php else : ?>
 		<div class="border-b border-[#e0e7ff] bg-[#eef2ff] px-6 pb-[13px] pt-3">
-			<p class="flex items-center justify-center gap-1.5 text-center text-[12px] font-semibold leading-4 <?php echo $shipping['qualifies'] ? 'text-[#007a55]' : 'text-navy'; ?>">
-				<?php if ( $shipping['qualifies'] ) : ?>
-					<?php echo plenty_asset_img( 'icon-check-green.svg', 12, 12, array( 'class' => 'block', 'loading' => 'eager' ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
-					<?php echo esc_html( plenty_content( 'cart_free_shipping_done' ) ); ?>
-				<?php else : ?>
-					<?php echo str_replace( '{amount}', wc_price( $shipping['remaining'] ), esc_html( plenty_content( 'cart_free_shipping_todo' ) ) ); // phpcs:ignore WordPress.Security.EscapeOutput -- escaped label + wc_price(). ?>
-				<?php endif; ?>
-			</p>
-			<div class="mt-2 h-1 overflow-hidden rounded-full bg-[#c7d2fe]" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="<?php echo esc_attr( (string) round( $shipping['percent'] ) ); ?>" aria-label="<?php esc_attr_e( 'Progress to free shipping', 'plenty' ); ?>">
-				<div class="h-1 rounded-full bg-navy transition-[width] duration-500" style="width: <?php echo esc_attr( (string) round( $shipping['percent'], 2 ) ); ?>%"></div>
-			</div>
+			<?php if ( $quoted ) : ?>
+				<p class="text-center text-[12px] font-semibold leading-4 text-navy"><?php echo esc_html( plenty_content( 'shipping_quote_note' ) ); ?></p>
+			<?php else : ?>
+				<p class="flex items-center justify-center gap-1.5 text-center text-[12px] font-semibold leading-4 <?php echo $shipping['qualifies'] ? 'text-[#007a55]' : 'text-navy'; ?>">
+					<?php if ( $shipping['qualifies'] ) : ?>
+						<?php echo plenty_asset_img( 'icon-check-green.svg', 12, 12, array( 'class' => 'block', 'loading' => 'eager' ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
+						<?php echo esc_html( plenty_content( 'cart_free_shipping_done' ) ); ?>
+					<?php else : ?>
+						<?php echo str_replace( '{amount}', wc_price( $shipping['remaining'] ), esc_html( plenty_content( 'cart_free_shipping_todo' ) ) ); // phpcs:ignore WordPress.Security.EscapeOutput -- escaped label + wc_price(). ?>
+					<?php endif; ?>
+				</p>
+				<div class="mt-2 h-1 overflow-hidden rounded-full bg-[#c7d2fe]" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="<?php echo esc_attr( (string) round( $shipping['percent'] ) ); ?>" aria-label="<?php esc_attr_e( 'Progress to free shipping', 'plenty' ); ?>">
+					<div class="h-1 rounded-full bg-navy transition-[width] duration-500" style="width: <?php echo esc_attr( (string) round( $shipping['percent'], 2 ) ); ?>%"></div>
+				</div>
+			<?php endif; ?>
 		</div>
 
 		<div class="min-h-0 flex-1 overflow-y-auto px-6 py-4">
@@ -141,7 +146,9 @@ $muted    = 'flex items-start justify-between text-[12px] leading-4 text-muted';
 				<?php endif; ?>
 				<div class="<?php echo esc_attr( $muted ); ?>">
 					<dt><?php echo esc_html( plenty_content( 'cart_shipping_label' ) ); ?></dt>
-					<?php if ( $shipping['qualifies'] ) : ?>
+					<?php if ( $quoted ) : ?>
+						<dd class="font-medium text-navy"><?php echo esc_html( plenty_content( 'shipping_quote_label' ) ); ?></dd>
+					<?php elseif ( $shipping['qualifies'] ) : ?>
 						<dd class="font-medium text-[#096]"><?php echo esc_html( plenty_content( 'cart_shipping_free' ) ); ?></dd>
 					<?php else : ?>
 						<dd><?php echo esc_html( plenty_content( 'cart_shipping_pending' ) ); ?></dd>

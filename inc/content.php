@@ -121,6 +121,8 @@ function plenty_content_defaults(): array {
 		'cart_shipping_label'     => 'Shipping',
 		'cart_shipping_free'      => 'Free',
 		'cart_shipping_pending'   => 'Calculated at checkout',
+		'shipping_quote_label'    => 'A coordinar',
+		'shipping_quote_note'     => 'Nos comunicaremos con vos para coordinar la entrega y su costo.',
 		'cart_total_label'        => 'Total',
 		'cart_checkout_label'     => 'Checkout',
 		'cart_trust_1'            => '365-night trial',

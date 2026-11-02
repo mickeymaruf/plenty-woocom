@@ -132,7 +132,7 @@
         },
         {
             "key": "field_plenty_tab_cart_drawer",
-            "label": "Cart drawer",
+            "label": "Cart & shipping",
             "name": "",
             "type": "tab",
             "placement": "top",
@@ -151,7 +151,7 @@
             "label": "Free shipping from",
             "name": "cart_free_shipping_min",
             "type": "number",
-            "instructions": "Cart amount needed for free shipping, used for the progress bar and the \"Shipping\" line. 0 = every order ships free. Keep this in line with your WooCommerce shipping settings.",
+            "instructions": "Cart amount needed for free shipping, used for the progress bar and the \"Shipping\" line. 0 = every order ships free. Keep this in line with your WooCommerce shipping settings. Not used while the \"A coordinar\" shipping method is enabled.",
             "required": 0,
             "min": 0,
             "step": 1
@@ -202,6 +202,22 @@
             "name": "cart_shipping_pending",
             "type": "text",
             "instructions": "Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_shipping_quote_label",
+            "label": "\"A coordinar\" shipping: label",
+            "name": "shipping_quote_label",
+            "type": "text",
+            "instructions": "Shown instead of a shipping cost while the \"A coordinar\" method is enabled in WooCommerce → Settings → Shipping: cart drawer, checkout, order emails. Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_shipping_quote_note",
+            "label": "\"A coordinar\" shipping: note",
+            "name": "shipping_quote_note",
+            "type": "text",
+            "instructions": "Shown under the shipping option at checkout and in the cart drawer banner. Leave empty to use the default shown in the design.",
             "required": 0
         },
         {
@@ -280,5 +296,5 @@
     "active": true,
     "description": "Site-wide footer and cart drawer content. Footer link columns are menus (Appearance → Menus).",
     "show_in_rest": 0,
-    "modified": 1793024145
+    "modified": 1793603363
 }

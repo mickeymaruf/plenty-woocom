@@ -22,5 +22,6 @@ require PLENTY_DIR . '/inc/contact-form.php';
 
 if ( class_exists( 'WooCommerce' ) ) {
 	require PLENTY_DIR . '/inc/woocommerce.php';
+	require PLENTY_DIR . '/inc/shipping.php';
 	require PLENTY_DIR . '/inc/cart-drawer.php';
 }
