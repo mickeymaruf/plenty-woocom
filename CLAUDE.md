@@ -17,6 +17,8 @@ npm run dev      # watch src/css/app.css -> dist/app.css
 npm run build    # minified production build
 npm run deploy   # build, then upload the theme to production (bin/deploy.mjs)
 npm run deploy -- --rollback   # swap back to the previously deployed version
+npm run pull     # replace the Local site's DB, uploads and plugins with production's (bin/pull.mjs)
+npm run pull -- --db-only      # database (and live ACF JSON) only
 ```
 
 `dist/` is gitignored — run `npm run build` before deploying. `inc/enqueue.php` skips the stylesheet if `dist/app.css` is missing, and cache-busts with `filemtime`.
@@ -25,7 +27,8 @@ npm run deploy -- --rollback   # swap back to the previously deployed version
 
 - Vultr server `64.176.26.129` (Santiago) running CloudPanel; site user `plenty`, site root `/home/plenty/htdocs/64-176-26-129.sslip.io` (temporary sslip.io domain until the real one exists). PHP 8.3, cron runs `wp-cron.php` every 5 min (`DISABLE_WP_CRON`).
 - **Code goes up, content stays there.** Theme changes are made locally and shipped with `npm run deploy`; content, products, menus and plugins are managed in the live wp-admin. Never import the Local database into production once the site has real content or orders.
-- `bin/deploy.mjs` streams the theme over `ssh` with `tar` (skipping `src`, `node_modules`, `.git`, `bin`, package files) into `themes/.plenty-new`, then swaps it in and keeps the old one as `themes/.plenty-prev`. Target is overridable with `DEPLOY_HOST` / `DEPLOY_THEMES_DIR`. After deploying `acf-json/` changes, click "Sync available" in WP Admin → ACF.
+- `bin/deploy.mjs` streams the theme over `ssh` with `tar` (skipping `src`, `node_modules`, `.git`, `bin`, package files) into `themes/.plenty-new`, then swaps it in and keeps the old one as `themes/.plenty-prev`. Target is overridable with `DEPLOY_HOST` / `DEPLOY_THEMES_DIR`. After deploying `acf-json/` changes, click "Sync available" in WP Admin → ACF. Deploy refuses to run when the live `acf-json/` has field groups newer than the repo's (edited in the live wp-admin): pull them first, or `--force` to discard them.
+- **Content comes down with `npm run pull`** (Local for Windows only; the site must be running in Local). It downloads everything first, then replaces the local DB (URLs rewritten to the Local URL), `uploads` and `plugins`, and copies live `acf-json` files with a newer `modified` into the repo. Production is only read; the rest of the theme is never touched. Replaced local data and both DB dumps go to `<Local site>/pull-backups/<timestamp>/` (outside the repo; the live dump holds customer data). After a pull, log in with the live wp-admin account, and switch payment gateways (MercadoPago Plus has live `APP_USR-` keys and no sandbox toggle) to test credentials before testing checkout.
 
 ## Design
 
@@ -58,7 +61,7 @@ page.php                  Default page (also renders Cart / Checkout / My Accoun
 page-templates/           contact.php, about.php — page templates ("Template Name"), chosen in the page editor
 index.php                 Fallback: blog, archives, search
 acf-json/                 ACF field group JSON (committed)
-bin/                      deploy.mjs; one-time seeds run with `wp eval-file`: seed-defaults.php (design defaults → ACF values), seed-menus.php (header + footer menus from Figma)
+bin/                      deploy.mjs, pull.mjs (production → Local); one-time seeds run with `wp eval-file`: seed-defaults.php (design defaults → ACF values), seed-menus.php (header + footer menus from Figma)
 assets/images/            Images and icons exported from Figma (defaults for every image field)
 assets/js/theme.js        Mobile nav, product filter tabs, product gallery, FAQ "Show all", contact form (plain JS, no build)
 assets/js/cart-drawer.js  Cart drawer open/close, AJAX add to cart, quantity/remove, loading states

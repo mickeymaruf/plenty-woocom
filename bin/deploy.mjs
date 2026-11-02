@@ -11,7 +11,7 @@
  */
 
 import { spawn, execSync } from 'node:child_process';
-import { existsSync, readdirSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -49,6 +49,23 @@ systemctl reload ${ PHP_FPM }
 echo "Deployed $(find ${ THEME } -type f | wc -l) files."`;
 }
 
+/**
+ * ACF field groups saved in the live wp-admin are written to the live theme's acf-json/, which a
+ * deploy would overwrite. Returns the live files that are missing locally or have a newer "modified".
+ */
+function liveAcfChanges() {
+	const output = execSync( `ssh ${ HOST } "cd '${ THEMES_DIR }/${ THEME }/acf-json' 2>/dev/null && grep -H '\\"modified\\"' *.json || true"`, { encoding: 'utf8' } );
+	return output.split( '\n' ).flatMap( ( line ) => {
+		const match = line.match( /^([\w.-]+\.json):\s*"modified":\s*(\d+)/ );
+		if ( ! match ) {
+			return [];
+		}
+		const local = join( themeDir, 'acf-json', match[ 1 ] );
+		const localModified = existsSync( local ) ? JSON.parse( readFileSync( local, 'utf8' ) ).modified || 0 : -1;
+		return Number( match[ 2 ] ) > localModified ? [ match[ 1 ] ] : [];
+	} );
+}
+
 function run( cmd, args, options ) {
 	return new Promise( ( resolve, reject ) => {
 		const child = spawn( cmd, args, options );
@@ -77,6 +94,11 @@ async function main() {
 		}
 	} catch {
 		// Not a git checkout; nothing to warn about.
+	}
+
+	const acfChanges = liveAcfChanges();
+	if ( acfChanges.length && ! process.argv.includes( '--force' ) ) {
+		throw new Error( `ACF field groups were changed on live and would be overwritten: ${ acfChanges.join( ', ' ) }\nRun \`npm run pull\` to bring them into acf-json/, or deploy with \`npm run deploy -- --force\` to discard them.` );
 	}
 
 	const entries = readdirSync( themeDir ).filter( ( name ) => ! SKIP.has( name ) );

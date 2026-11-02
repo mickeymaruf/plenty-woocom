@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "tailwindcss -i ./src/css/app.css -o ./dist/app.css --watch",
     "build": "tailwindcss -i ./src/css/app.css -o ./dist/app.css --minify",
-    "deploy": "npm run build && node bin/deploy.mjs"
+    "deploy": "npm run build && node bin/deploy.mjs",
+    "pull": "node bin/pull.mjs"
   },
   "devDependencies": {
     "@tailwindcss/cli": "^4.3.3",
