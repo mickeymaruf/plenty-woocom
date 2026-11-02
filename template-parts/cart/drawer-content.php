@@ -23,13 +23,13 @@ $muted    = 'flex items-start justify-between text-[12px] leading-4 text-muted';
 			<?php if ( $count ) : ?>
 				<span class="flex size-5 items-center justify-center rounded-full bg-navy text-[10px] font-bold leading-[15px] text-white">
 					<?php echo esc_html( $count ); ?>
-					<span class="sr-only"><?php echo esc_html( _n( 'item', 'items', $count, 'plenty' ) ); ?></span>
+					<span class="sr-only"><?php echo esc_html( _n( 'producto', 'productos', $count, 'plenty' ) ); ?></span>
 				</span>
 			<?php endif; ?>
 		</div>
 		<button type="button" class="-m-1 rounded p-1 hover:bg-[#f3f4f6]" data-cart-close>
 			<?php echo plenty_asset_img( 'icon-close.svg', 18, 18, array( 'class' => 'block', 'loading' => 'eager' ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
-			<span class="sr-only"><?php esc_html_e( 'Close cart', 'plenty' ); ?></span>
+			<span class="sr-only"><?php esc_html_e( 'Cerrar carrito', 'plenty' ); ?></span>
 		</button>
 	</div>
 
@@ -55,7 +55,7 @@ $muted    = 'flex items-start justify-between text-[12px] leading-4 text-muted';
 						<?php echo str_replace( '{amount}', wc_price( $shipping['remaining'] ), esc_html( plenty_content( 'cart_free_shipping_todo' ) ) ); // phpcs:ignore WordPress.Security.EscapeOutput -- escaped label + wc_price(). ?>
 					<?php endif; ?>
 				</p>
-				<div class="mt-2 h-1 overflow-hidden rounded-full bg-[#c7d2fe]" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="<?php echo esc_attr( (string) round( $shipping['percent'] ) ); ?>" aria-label="<?php esc_attr_e( 'Progress to free shipping', 'plenty' ); ?>">
+				<div class="mt-2 h-1 overflow-hidden rounded-full bg-[#c7d2fe]" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="<?php echo esc_attr( (string) round( $shipping['percent'] ) ); ?>" aria-label="<?php esc_attr_e( 'Progreso hacia el envío gratis', 'plenty' ); ?>">
 					<div class="h-1 rounded-full bg-navy transition-[width] duration-500" style="width: <?php echo esc_attr( (string) round( $shipping['percent'], 2 ) ); ?>%"></div>
 				</div>
 			<?php endif; ?>
@@ -106,7 +106,7 @@ $muted    = 'flex items-start justify-between text-[12px] leading-4 text-muted';
 									<span class="sr-only">
 										<?php
 										/* translators: %s: product name. */
-										printf( esc_html__( 'Remove %s from cart', 'plenty' ), esc_html( $name ) );
+										printf( esc_html__( 'Quitar %s del carrito', 'plenty' ), esc_html( $name ) );
 										?>
 									</span>
 								</button>
@@ -116,12 +116,12 @@ $muted    = 'flex items-start justify-between text-[12px] leading-4 text-muted';
 								<div class="flex items-center border border-[#e5e7eb] p-px">
 									<button type="button" class="<?php echo esc_attr( $stepper ); ?>" data-cart-update data-key="<?php echo esc_attr( $key ); ?>" data-quantity="<?php echo esc_attr( $quantity - 1 ); ?>" data-action="decrease" <?php disabled( $quantity <= 1 ); ?>>
 										<?php echo plenty_asset_img( 'icon-minus.svg', 11, 11, array( 'class' => 'block', 'loading' => 'eager' ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
-										<span class="sr-only"><?php esc_html_e( 'Decrease quantity', 'plenty' ); ?></span>
+										<span class="sr-only"><?php esc_html_e( 'Restar uno', 'plenty' ); ?></span>
 									</button>
-									<span class="w-7 text-center text-[12px] font-semibold leading-4 text-[#1e2939]" aria-label="<?php esc_attr_e( 'Quantity', 'plenty' ); ?>"><?php echo esc_html( $quantity ); ?></span>
+									<span class="w-7 text-center text-[12px] font-semibold leading-4 text-[#1e2939]" aria-label="<?php esc_attr_e( 'Cantidad', 'plenty' ); ?>"><?php echo esc_html( $quantity ); ?></span>
 									<button type="button" class="<?php echo esc_attr( $stepper ); ?>" data-cart-update data-key="<?php echo esc_attr( $key ); ?>" data-quantity="<?php echo esc_attr( $quantity + 1 ); ?>" data-action="increase" <?php disabled( $max > 0 && $quantity >= $max ); ?>>
 										<?php echo plenty_asset_img( 'icon-plus.svg', 11, 11, array( 'class' => 'block', 'loading' => 'eager' ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
-										<span class="sr-only"><?php esc_html_e( 'Increase quantity', 'plenty' ); ?></span>
+										<span class="sr-only"><?php esc_html_e( 'Sumar uno', 'plenty' ); ?></span>
 									</button>
 								</div>
 								<p class="text-right text-[14px] font-bold leading-5 text-ink"><?php echo $cart->get_product_subtotal( $product, $quantity ); // phpcs:ignore WordPress.Security.EscapeOutput -- WooCommerce price markup. ?></p>
@@ -140,7 +140,7 @@ $muted    = 'flex items-start justify-between text-[12px] leading-4 text-muted';
 				</div>
 				<?php if ( $cart->get_discount_total() > 0 ) : ?>
 					<div class="<?php echo esc_attr( $muted ); ?>">
-						<dt><?php esc_html_e( 'Discount', 'plenty' ); ?></dt>
+						<dt><?php esc_html_e( 'Descuento', 'plenty' ); ?></dt>
 						<dd>-<?php echo wc_price( $cart->get_discount_total() + ( $cart->display_prices_including_tax() ? $cart->get_discount_tax() : 0 ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?></dd>
 					</div>
 				<?php endif; ?>

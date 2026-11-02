@@ -26,14 +26,14 @@ $inputs  = array(
 	method="post"
 	action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>"
 	data-contact-form
-	data-error-message="<?php esc_attr_e( 'Something went wrong. Please try again.', 'plenty' ); ?>"
+	data-error-message="<?php esc_attr_e( 'Algo salió mal. Por favor, intentá de nuevo.', 'plenty' ); ?>"
 >
 	<input type="hidden" name="action" value="plenty_contact">
 	<input type="hidden" name="page_id" value="<?php echo esc_attr( $page_id ); ?>">
 
 	<?php // Honeypot: hidden from people, filled in by bots. ?>
 	<div class="absolute -left-[9999px]" aria-hidden="true">
-		<label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+		<label>Sitio web <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
 	</div>
 
 	<div class="grid w-full gap-8 md:grid-cols-3">
@@ -78,7 +78,7 @@ $inputs  = array(
 	if ( 'sent' === $status ) {
 		echo esc_html( plenty_content( 'contact_success', $page_id ) );
 	} elseif ( 'error' === $status ) {
-		esc_html_e( 'Your message couldn’t be sent. Please check the fields and try again.', 'plenty' );
+		esc_html_e( 'No se pudo enviar tu mensaje. Revisá los campos e intentá de nuevo.', 'plenty' );
 	}
 	?></p>
 

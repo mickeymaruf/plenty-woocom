@@ -50,10 +50,10 @@ function plenty_setup(): void {
 	// Footer columns use the assigned menu's name as the column heading.
 	register_nav_menus(
 		array(
-			'primary'  => __( 'Primary', 'plenty' ),
-			'footer_1' => __( 'Footer column 1', 'plenty' ),
-			'footer_2' => __( 'Footer column 2', 'plenty' ),
-			'footer_3' => __( 'Footer column 3', 'plenty' ),
+			'primary'  => __( 'Principal', 'plenty' ),
+			'footer_1' => __( 'Pie de página, columna 1', 'plenty' ),
+			'footer_2' => __( 'Pie de página, columna 2', 'plenty' ),
+			'footer_3' => __( 'Pie de página, columna 3', 'plenty' ),
 		)
 	);
 }

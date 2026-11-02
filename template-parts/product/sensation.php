@@ -34,7 +34,7 @@ if ( ! $firmness && ! $features ) {
 		<h2 class="text-center text-[32px] font-bold leading-[1.2] text-ink sm:text-[48px]"><?php echo esc_html( plenty_content( 'pdp_sensation_title' ) ); ?></h2>
 
 		<?php if ( $firmness ) : ?>
-			<div class="mx-auto flex h-5 max-w-[600px] my-11" role="img" aria-label="<?php /* translators: %d: firmness level 1–4. */ echo esc_attr( sprintf( __( 'Firmness %d of 4', 'plenty' ), $firmness ) ); ?>">
+			<div class="mx-auto flex h-5 max-w-[600px] my-11" role="img" aria-label="<?php /* translators: %d: firmness level 1–4. */ echo esc_attr( sprintf( __( 'Firmeza %d de 4', 'plenty' ), $firmness ) ); ?>">
 				<?php for ( $level = 1; $level <= 4; $level++ ) : ?>
 					<span class="flex-1 border-y border-r border-[#767676] first:border-l <?php echo $level === $firmness ? 'bg-[#273c66]' : ''; ?>"></span>
 				<?php endfor; ?>

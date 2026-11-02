@@ -50,7 +50,7 @@ $tab     = 'relative rounded-full px-4 py-2 text-[14px] font-medium leading-5 tr
 		<h2 class="text-center text-[32px] font-semibold capitalize leading-[1.2] text-ink sm:text-[48px]"><?php echo esc_html( plenty_content( 'products_title' ) ); ?></h2>
 
 		<?php if ( $show_tabs && count( $categories ) > 1 ) : ?>
-			<div class="relative flex max-w-full items-center overflow-x-auto rounded-full border border-[#e5e7eb] bg-white p-[5px]" role="group" aria-label="<?php esc_attr_e( 'Filter mattresses', 'plenty' ); ?>">
+			<div class="relative flex max-w-full items-center overflow-x-auto rounded-full border border-[#e5e7eb] bg-white p-[5px]" role="group" aria-label="<?php esc_attr_e( 'Filtrar colchones', 'plenty' ); ?>">
 				<span class="pointer-events-none absolute left-0 top-[5px] h-9 rounded-full bg-navy opacity-0 data-ready:opacity-100 data-ready:motion-safe:transition-[transform,width] data-ready:motion-safe:duration-300 data-ready:motion-safe:ease-out" data-filter-pill aria-hidden="true"></span>
 				<button type="button" class="<?php echo esc_attr( $tab ); ?> shrink-0" data-filter="all" aria-pressed="true"><?php echo esc_html( plenty_content( 'products_all_label' ) ); ?></button>
 				<?php foreach ( $categories as $category ) : ?>

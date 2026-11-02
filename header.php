@@ -16,7 +16,7 @@ defined( 'ABSPATH' ) || exit;
 </head>
 <body <?php body_class( 'bg-white font-sans text-ink antialiased' ); ?>>
 <?php wp_body_open(); ?>
-<a class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-white focus:px-4 focus:py-2" href="#main"><?php esc_html_e( 'Skip to content', 'plenty' ); ?></a>
+<a class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-white focus:px-4 focus:py-2" href="#main"><?php esc_html_e( 'Ir al contenido', 'plenty' ); ?></a>
 
 <header class="relative z-40 bg-white">
 	<div class="container-site relative flex h-[100px] items-center justify-between">
@@ -31,7 +31,7 @@ defined( 'ABSPATH' ) || exit;
 		</a>
 
 		<?php if ( has_nav_menu( 'primary' ) ) : ?>
-			<nav id="site-nav" data-nav class="absolute inset-x-0 top-full hidden border-t border-neutral-100 bg-white px-4 py-4 shadow-lg lg:absolute lg:inset-x-auto lg:left-1/2 lg:top-1/2 lg:block lg:-translate-x-1/2 lg:-translate-y-1/2 lg:border-0 lg:p-0 lg:shadow-none" aria-label="<?php esc_attr_e( 'Primary', 'plenty' ); ?>">
+			<nav id="site-nav" data-nav class="absolute inset-x-0 top-full hidden border-t border-neutral-100 bg-white px-4 py-4 shadow-lg lg:absolute lg:inset-x-auto lg:left-1/2 lg:top-1/2 lg:block lg:-translate-x-1/2 lg:-translate-y-1/2 lg:border-0 lg:p-0 lg:shadow-none" aria-label="<?php esc_attr_e( 'Principal', 'plenty' ); ?>">
 				<?php
 				wp_nav_menu(
 					array(
@@ -52,7 +52,7 @@ defined( 'ABSPATH' ) || exit;
 
 			<?php if ( has_nav_menu( 'primary' ) ) : ?>
 				<button type="button" class="flex size-8 items-center justify-center lg:hidden" data-nav-toggle aria-controls="site-nav" aria-expanded="false">
-					<span class="sr-only"><?php esc_html_e( 'Menu', 'plenty' ); ?></span>
+					<span class="sr-only"><?php esc_html_e( 'Menú', 'plenty' ); ?></span>
 					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
 				</button>
 			<?php endif; ?>

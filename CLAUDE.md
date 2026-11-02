@@ -75,6 +75,7 @@ woocommerce/archive-product.php Shop page + product category/tag archives (headi
 ## Conventions
 
 - Prefix all functions with `plenty_`; text domain is `plenty`. Every PHP file starts with `defined( 'ABSPATH' ) || exit;`.
+- **The store is Spanish-only (Argentina, voseo: "Seleccioná", "vos").** Theme strings are written in Spanish directly in the `__()` calls (no `.po`/`.mo` for `plenty`). WordPress, WooCommerce and ACF are translated by their `es_AR` language packs: the site language must be Español de Argentina (Settings → General), locally and on production.
 - Escape all output (`esc_html`, `esc_attr`, `esc_url`, `wp_kses_post`).
 - Layout containers: `container-site` (1240px content, 100px gutters at 1440) and `container-narrow` (1120px, 160px gutters), defined as `@utility` in `app.css`.
 - Style with Tailwind utility classes directly in the PHP templates. Use `@layer components` in `src/css/app.css` only for markup we don't control (e.g. `the_content()` output via `.prose-content`, WooCommerce markup).

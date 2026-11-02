@@ -62,7 +62,7 @@ function plenty_cart_link(): void {
 		<span class="sr-only">
 			<?php
 			/* translators: %d: number of items in the cart. */
-			printf( esc_html( _n( 'Cart, %d item', 'Cart, %d items', $count, 'plenty' ) ), (int) $count );
+			printf( esc_html( _n( 'Carrito, %d producto', 'Carrito, %d productos', $count, 'plenty' ) ), (int) $count );
 			?>
 		</span>
 		<?php if ( $count ) : ?>

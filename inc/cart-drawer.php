@@ -41,10 +41,10 @@ function plenty_cart_drawer_assets(): void {
 		'addUrl'    => WC_AJAX::get_endpoint( 'plenty_add_to_cart' ),
 		'updateUrl' => WC_AJAX::get_endpoint( 'plenty_update_cart_item' ),
 		'i18n'      => array(
-			'adding'   => __( 'Adding to cart…', 'plenty' ),
-			'updating' => __( 'Updating cart…', 'plenty' ),
-			'added'    => __( 'Added to your cart.', 'plenty' ),
-			'error'    => __( 'Something went wrong. Please try again.', 'plenty' ),
+			'adding'   => __( 'Agregando al carrito…', 'plenty' ),
+			'updating' => __( 'Actualizando el carrito…', 'plenty' ),
+			'added'    => __( 'Se agregó a tu carrito.', 'plenty' ),
+			'error'    => __( 'Algo salió mal. Por favor, intentá de nuevo.', 'plenty' ),
 		),
 	);
 	wp_add_inline_script( 'plenty-cart-drawer', 'window.plentyCart = ' . wp_json_encode( $config ) . ';', 'before' );
@@ -155,7 +155,7 @@ function plenty_ajax_add_to_cart(): void {
 	$product_id = isset( $_POST['plenty_add_to_cart'] ) ? absint( wp_unslash( $_POST['plenty_add_to_cart'] ) ) : 0; // phpcs:ignore WordPress.Security.NonceVerification -- same as WooCommerce's add-to-cart form.
 
 	if ( ! $product_id ) {
-		plenty_cart_send_response( __( 'Please choose a product.', 'plenty' ) );
+		plenty_cart_send_response( __( 'Elegí un producto.', 'plenty' ) );
 	}
 
 	$added = false;
@@ -171,7 +171,7 @@ function plenty_ajax_add_to_cart(): void {
 	$error = plenty_cart_take_error();
 
 	if ( ! $error && ! $added ) {
-		$error = __( 'This product couldn’t be added to your cart.', 'plenty' );
+		$error = __( 'No se pudo agregar este producto a tu carrito.', 'plenty' );
 	}
 
 	plenty_cart_send_response( $error );
@@ -187,7 +187,7 @@ function plenty_ajax_update_cart_item(): void {
 	$item = $key ? WC()->cart->get_cart_item( $key ) : array();
 
 	if ( ! $item ) {
-		plenty_cart_send_response( __( 'This item is no longer in your cart.', 'plenty' ) );
+		plenty_cart_send_response( __( 'Este producto ya no está en tu carrito.', 'plenty' ) );
 	}
 
 	if ( $quantity <= 0 ) {
@@ -198,7 +198,7 @@ function plenty_ajax_update_cart_item(): void {
 	$max = $item['data']->get_max_purchase_quantity();
 	if ( $max > 0 && $quantity > $max ) {
 		/* translators: %d: maximum quantity. */
-		plenty_cart_send_response( sprintf( __( 'Only %d available.', 'plenty' ), $max ) );
+		plenty_cart_send_response( sprintf( __( 'Solo hay %d disponibles.', 'plenty' ), $max ) );
 	}
 
 	if ( apply_filters( 'woocommerce_update_cart_validation', true, $key, $item, $quantity ) ) {

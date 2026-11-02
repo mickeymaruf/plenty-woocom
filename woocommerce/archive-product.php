@@ -37,8 +37,8 @@ $pagination = paginate_links( // Not $pages: the_post() overwrites that WordPres
 		'total'     => (int) $GLOBALS['wp_query']->max_num_pages,
 		'current'   => max( 1, (int) get_query_var( 'paged' ) ),
 		'mid_size'  => 1,
-		'prev_text' => '<span aria-hidden="true">&lsaquo;</span><span class="sr-only">' . esc_html__( 'Previous page', 'plenty' ) . '</span>',
-		'next_text' => '<span aria-hidden="true">&rsaquo;</span><span class="sr-only">' . esc_html__( 'Next page', 'plenty' ) . '</span>',
+		'prev_text' => '<span aria-hidden="true">&lsaquo;</span><span class="sr-only">' . esc_html__( 'Página anterior', 'plenty' ) . '</span>',
+		'next_text' => '<span aria-hidden="true">&rsaquo;</span><span class="sr-only">' . esc_html__( 'Página siguiente', 'plenty' ) . '</span>',
 	)
 );
 ?>
@@ -48,7 +48,7 @@ $pagination = paginate_links( // Not $pages: the_post() overwrites that WordPres
 			<h1 class="text-center text-[32px] font-semibold capitalize leading-[1.2] text-ink sm:text-[48px]"><?php echo esc_html( $title ); ?></h1>
 
 			<?php if ( ( is_shop() || $active ) && count( $categories ) > 1 ) : ?>
-				<nav class="flex max-w-full items-center overflow-x-auto rounded-full border border-[#e5e7eb] bg-white p-[5px]" aria-label="<?php esc_attr_e( 'Filter mattresses', 'plenty' ); ?>">
+				<nav class="flex max-w-full items-center overflow-x-auto rounded-full border border-[#e5e7eb] bg-white p-[5px]" aria-label="<?php esc_attr_e( 'Filtrar colchones', 'plenty' ); ?>">
 					<a class="<?php echo esc_attr( $tab ); ?>" href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>" <?php echo $active ? '' : 'aria-current="page"'; ?>><?php echo esc_html( plenty_content( 'products_all_label' ) ); ?></a>
 					<?php foreach ( $categories as $category ) : ?>
 						<a class="<?php echo esc_attr( $tab ); ?>" href="<?php echo esc_url( get_term_link( $category ) ); ?>" <?php echo $active === $category->term_id ? 'aria-current="page"' : ''; ?>><?php echo esc_html( $category->name ); ?></a>
@@ -73,7 +73,7 @@ $pagination = paginate_links( // Not $pages: the_post() overwrites that WordPres
 			</ul>
 
 			<?php if ( $pagination ) : ?>
-				<nav class="flex flex-wrap items-center justify-center gap-2 *:flex *:size-10 *:items-center *:justify-center *:rounded-full *:text-[14px] *:font-medium *:text-[#6b7280] [&>.dots]:size-auto [&>a]:transition [&>a:hover]:text-navy [&>[aria-current]]:bg-navy [&>[aria-current]]:text-white" aria-label="<?php esc_attr_e( 'Products pages', 'plenty' ); ?>">
+				<nav class="flex flex-wrap items-center justify-center gap-2 *:flex *:size-10 *:items-center *:justify-center *:rounded-full *:text-[14px] *:font-medium *:text-[#6b7280] [&>.dots]:size-auto [&>a]:transition [&>a:hover]:text-navy [&>[aria-current]]:bg-navy [&>[aria-current]]:text-white" aria-label="<?php esc_attr_e( 'Páginas de productos', 'plenty' ); ?>">
 					<?php echo $pagination; // phpcs:ignore WordPress.Security.EscapeOutput -- paginate_links() output. ?>
 				</nav>
 			<?php endif; ?>

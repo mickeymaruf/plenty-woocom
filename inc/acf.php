@@ -77,7 +77,7 @@ function plenty_acf_default_image_preview( array $field ): void {
 	}
 	?>
 	<div class="plenty-acf-default">
-		<p class="description"><?php esc_html_e( 'Currently shown (default):', 'plenty' ); ?></p>
+		<p class="description"><?php esc_html_e( 'Se muestra actualmente (predeterminado):', 'plenty' ); ?></p>
 		<?php echo plenty_asset_img( $default[0], $default[1], $default[2], array( 'loading' => 'eager' ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
 	</div>
 	<?php

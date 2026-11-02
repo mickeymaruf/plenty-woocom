@@ -22,7 +22,7 @@ class Plenty_Quote_Shipping extends WC_Shipping_Method {
 		$this->id                 = self::ID;
 		$this->instance_id        = absint( $instance_id );
 		$this->method_title       = 'A coordinar';
-		$this->method_description = __( 'No shipping cost at checkout: the store contacts the customer after the order to arrange delivery and its cost. The label and note customers see are edited on the home page, Site Settings → Cart & shipping.', 'plenty' );
+		$this->method_description = __( 'Sin costo de envío en el checkout: la tienda se comunica con el cliente después del pedido para coordinar la entrega y su costo. La etiqueta y la nota que ven los clientes se editan en la página de inicio, Site Settings → Cart & shipping.', 'plenty' );
 		$this->supports           = array( 'shipping-zones' );
 		$this->enabled            = 'yes';
 		$this->title              = (string) plenty_content( 'shipping_quote_label' );

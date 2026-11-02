@@ -19,7 +19,7 @@ get_header();
 		<h1 class="mb-10 text-3xl font-bold tracking-tight">
 			<?php
 			/* translators: %s: search query. */
-			printf( esc_html__( 'Search results for "%s"', 'plenty' ), esc_html( get_search_query() ) );
+			printf( esc_html__( 'Resultados de búsqueda para "%s"', 'plenty' ), esc_html( get_search_query() ) );
 			?>
 		</h1>
 	<?php endif; ?>
@@ -46,7 +46,7 @@ get_header();
 			<?php the_posts_pagination(); ?>
 		</div>
 	<?php else : ?>
-		<p><?php esc_html_e( 'Nothing found.', 'plenty' ); ?></p>
+		<p><?php esc_html_e( 'No se encontraron resultados.', 'plenty' ); ?></p>
 	<?php endif; ?>
 </main>
 

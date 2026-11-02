@@ -82,7 +82,7 @@ $image_attrs = array(
 					<p class="text-[14px] font-bold leading-5 tracking-[-0.1504px] text-ink">
 						<?php
 						/* translators: %s: lowest product price. */
-						printf( esc_html__( 'From %s', 'plenty' ), wc_price( wc_get_price_to_display( $product, array( 'price' => $price ) ) ) ); // phpcs:ignore WordPress.Security.EscapeOutput -- wc_price() escapes.
+						printf( esc_html__( 'Desde %s', 'plenty' ), wc_price( wc_get_price_to_display( $product, array( 'price' => $price ) ) ) ); // phpcs:ignore WordPress.Security.EscapeOutput -- wc_price() escapes.
 						?>
 					</p>
 				<?php endif; ?>

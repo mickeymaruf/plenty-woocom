@@ -32,7 +32,7 @@ $main_size = 'woocommerce_single';
 						<span class="sr-only">
 							<?php
 							/* translators: %d: image number. */
-							printf( esc_html__( 'Show image %d', 'plenty' ), (int) $index + 1 );
+							printf( esc_html__( 'Ver imagen %d', 'plenty' ), (int) $index + 1 );
 							?>
 						</span>
 					</button>

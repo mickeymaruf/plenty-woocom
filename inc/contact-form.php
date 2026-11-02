@@ -50,18 +50,18 @@ function plenty_contact_submit(): void {
 
 	$errors = array();
 	if ( '' === $data['name'] ) {
-		$errors['name'] = __( 'Please enter your name.', 'plenty' );
+		$errors['name'] = __( 'Ingresá tu nombre.', 'plenty' );
 	}
 	if ( '' === $data['email'] || ! is_email( $data['email'] ) ) {
-		$errors['email'] = __( 'Please enter a valid email address.', 'plenty' );
+		$errors['email'] = __( 'Ingresá un email válido.', 'plenty' );
 	}
 	if ( '' === trim( $data['message'] ) ) {
-		$errors['message'] = __( 'Please write a message.', 'plenty' );
+		$errors['message'] = __( 'Escribí un mensaje.', 'plenty' );
 	} elseif ( mb_strlen( $data['message'] ) > 5000 ) {
-		$errors['message'] = __( 'Please keep your message under 5,000 characters.', 'plenty' );
+		$errors['message'] = __( 'El mensaje no puede superar los 5.000 caracteres.', 'plenty' );
 	}
 	if ( $errors ) {
-		$respond( false, __( 'Please check the highlighted fields.', 'plenty' ), $errors );
+		$respond( false, __( 'Revisá los campos marcados.', 'plenty' ), $errors );
 	}
 
 	// At most 5 messages per IP every 10 minutes.
@@ -69,7 +69,7 @@ function plenty_contact_submit(): void {
 	$rate_key = 'plenty_contact_' . md5( $ip );
 	$count    = (int) get_transient( $rate_key );
 	if ( $count >= 5 ) {
-		$respond( false, __( 'You’ve sent several messages already. Please try again in a few minutes.', 'plenty' ) );
+		$respond( false, __( 'Ya enviaste varios mensajes. Por favor, intentá de nuevo en unos minutos.', 'plenty' ) );
 	}
 	set_transient( $rate_key, $count + 1, 10 * MINUTE_IN_SECONDS );
 
@@ -78,28 +78,28 @@ function plenty_contact_submit(): void {
 	$site_name = wp_specialchars_decode( get_bloginfo( 'name' ), ENT_QUOTES );
 
 	/* translators: 1: site name, 2: sender name. */
-	$subject = sprintf( __( '[%1$s] New message from %2$s', 'plenty' ), $site_name, $data['name'] );
+	$subject = sprintf( __( '[%1$s] Nuevo mensaje de %2$s', 'plenty' ), $site_name, $data['name'] );
 	$body    = implode(
 		"\n",
 		array(
 			/* translators: %s: sender name. */
-			sprintf( __( 'Name: %s', 'plenty' ), $data['name'] ),
+			sprintf( __( 'Nombre: %s', 'plenty' ), $data['name'] ),
 			/* translators: %s: sender email. */
 			sprintf( __( 'Email: %s', 'plenty' ), $data['email'] ),
 			/* translators: %s: sender phone. */
-			sprintf( __( 'Phone: %s', 'plenty' ), $data['phone'] ? $data['phone'] : '—' ),
+			sprintf( __( 'Teléfono: %s', 'plenty' ), $data['phone'] ? $data['phone'] : '—' ),
 			'',
 			$data['message'],
 			'',
 			'—',
 			/* translators: %s: page URL. */
-			sprintf( __( 'Sent from %s', 'plenty' ), $page_id ? get_permalink( $page_id ) : home_url( '/' ) ),
+			sprintf( __( 'Enviado desde %s', 'plenty' ), $page_id ? get_permalink( $page_id ) : home_url( '/' ) ),
 		)
 	);
 	$headers = array( sprintf( 'Reply-To: %s <%s>', str_replace( array( '<', '>', '"' ), '', $data['name'] ), $data['email'] ) );
 
 	if ( ! wp_mail( $recipient, $subject, $body, $headers ) ) {
-		$respond( false, __( 'We couldn’t send your message right now. Please try again later or reach us by phone or WhatsApp.', 'plenty' ) );
+		$respond( false, __( 'No pudimos enviar tu mensaje en este momento. Por favor, intentá más tarde o comunicate por teléfono o WhatsApp.', 'plenty' ) );
 	}
 
 	$respond( true, $success );
