@@ -1,0 +1,223 @@
+/* TEMPORARY DEMO — Amazon-style checkout (inc/checkout-demo.php). Plain unlayered CSS so it beats WooCommerce's. */
+
+/* Distraction-free: no site header/footer, no page title; light grey page. */
+body.woocommerce-checkout {
+	background: #f3f4f6;
+}
+
+body.woocommerce-checkout > header,
+body.woocommerce-checkout > footer,
+body.woocommerce-checkout main > article > h1 {
+	display: none;
+}
+
+body.woocommerce-checkout main {
+	padding-top: 24px;
+}
+
+/* Fields: 2-column grid, custom inputs. */
+.demo-checkout .demo-fields {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 16px;
+}
+
+.demo-checkout .demo-fields .form-row {
+	float: none;
+	width: auto;
+	margin: 0;
+	padding: 0;
+}
+
+.demo-checkout .demo-fields .demo-field--full {
+	grid-column: 1 / -1;
+}
+
+.demo-checkout .demo-fields .demo-field--hidden {
+	display: none !important; /* WooCommerce's address script .show()s the country row. */
+}
+
+/* The page wraps content in .prose-content; undo its heading and list spacing. */
+.demo-checkout h2,
+.demo-checkout h3 {
+	margin: 0;
+}
+
+.demo-checkout ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+@media (max-width: 639px) {
+	.demo-checkout .demo-fields .demo-field--half {
+		grid-column: 1 / -1;
+	}
+}
+
+.demo-checkout .form-row label {
+	display: block;
+	margin-bottom: 6px;
+	font-size: 13px;
+	font-weight: 600;
+	line-height: 1.2;
+	color: var(--color-ink);
+}
+
+.demo-checkout .form-row .required {
+	color: #b12704;
+	text-decoration: none;
+}
+
+.demo-checkout .form-row input.input-text,
+.demo-checkout .form-row select,
+.demo-checkout .form-row .select2-container .select2-selection--single {
+	width: 100%;
+	height: 44px;
+	padding: 0 12px;
+	border: 1px solid #a6a6a6;
+	border-radius: 8px;
+	background: #fff;
+	box-shadow: 0 1px 0 rgb(255 255 255 / 0.5), inset 0 1px 2px rgb(15 17 17 / 0.12);
+	font-size: 15px;
+	line-height: 42px;
+	color: var(--color-ink);
+}
+
+.demo-checkout .form-row .select2-container .select2-selection--single .select2-selection__rendered {
+	padding: 0;
+	line-height: 42px;
+}
+
+.demo-checkout .form-row .select2-container .select2-selection--single .select2-selection__arrow {
+	height: 42px;
+}
+
+.demo-checkout .form-row input.input-text:focus,
+.demo-checkout .form-row .select2-container--focus .select2-selection--single {
+	border-color: var(--color-navy);
+	outline: 3px solid rgb(9 45 71 / 0.15);
+}
+
+.demo-checkout .form-row.woocommerce-invalid input.input-text {
+	border-color: #b12704;
+}
+
+/* Payment: WooCommerce's grey box becomes a plain list; its own place-order button is replaced by ours. */
+.demo-checkout #payment {
+	background: none;
+	border-radius: 0;
+}
+
+.demo-checkout #payment ul.payment_methods {
+	padding: 0;
+	border: 0;
+}
+
+.demo-checkout #payment ul.payment_methods li {
+	padding: 14px 16px;
+	border: 1px solid #f0c14b;
+	border-radius: 8px;
+	background: #fcf5ee;
+	font-size: 15px;
+	font-weight: 600;
+}
+
+.demo-checkout #payment div.payment_box {
+	margin: 12px 0 0;
+	background: #fff;
+	border: 1px solid #e5e7eb;
+	border-radius: 8px;
+	font-weight: 400;
+}
+
+.demo-checkout #payment div.payment_box::before {
+	display: none;
+}
+
+.demo-checkout #payment div.form-row.place-order {
+	padding: 12px 0 0;
+	font-size: 12px;
+	color: var(--color-muted);
+}
+
+.demo-checkout #payment #place_order {
+	display: none;
+}
+
+/* Summary: totals only (the items are listed in step 3). */
+.demo-checkout table.woocommerce-checkout-review-order-table {
+	margin: 0;
+	border: 0;
+	font-size: 14px;
+}
+
+.demo-checkout table.woocommerce-checkout-review-order-table thead,
+.demo-checkout table.woocommerce-checkout-review-order-table tbody {
+	display: none;
+}
+
+.demo-checkout table.woocommerce-checkout-review-order-table th,
+.demo-checkout table.woocommerce-checkout-review-order-table td {
+	padding: 4px 0;
+	border: 0;
+	font-weight: 400;
+	background: none;
+}
+
+.demo-checkout table.woocommerce-checkout-review-order-table td {
+	text-align: right;
+}
+
+.demo-checkout table.woocommerce-checkout-review-order-table #shipping_method li label {
+	font-weight: 600;
+	color: #007a55;
+}
+
+.demo-checkout table.woocommerce-checkout-review-order-table #shipping_method li label + span {
+	display: none;
+}
+
+.demo-checkout table.woocommerce-checkout-review-order-table tr.order-total th,
+.demo-checkout table.woocommerce-checkout-review-order-table tr.order-total td {
+	padding-top: 12px;
+	border-top: 1px solid #e5e7eb;
+	font-size: 18px;
+	font-weight: 700;
+	color: #b12704;
+}
+
+.demo-checkout [data-demo-coupon-message].is-error {
+	color: #b12704;
+}
+
+.demo-checkout [data-demo-coupon-message].is-success {
+	color: #007a55;
+}
+
+/* WooCommerce prepends its error box to the form: span the whole grid instead of taking a column. */
+.demo-checkout form.checkout > .woocommerce-NoticeGroup {
+	grid-column: 1 / -1;
+}
+
+.demo-checkout .woocommerce-NoticeGroup .woocommerce-error {
+	margin: 0;
+	padding: 14px 16px 14px 44px;
+	border: 1px solid #b12704;
+	border-radius: 10px;
+	background: #fff;
+	font-size: 14px;
+	line-height: 1.5;
+	color: var(--color-ink);
+}
+
+.demo-checkout .woocommerce-NoticeGroup .woocommerce-error::before {
+	top: 14px;
+	left: 16px;
+	color: #b12704;
+}
+
+.demo-checkout .woocommerce-NoticeGroup .woocommerce-error a {
+	color: inherit;
+	text-decoration: none;
+}

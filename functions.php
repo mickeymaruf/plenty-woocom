@@ -24,4 +24,5 @@ if ( class_exists( 'WooCommerce' ) ) {
 	require PLENTY_DIR . '/inc/woocommerce.php';
 	require PLENTY_DIR . '/inc/shipping.php';
 	require PLENTY_DIR . '/inc/cart-drawer.php';
+	require PLENTY_DIR . '/inc/checkout-demo.php'; // TEMPORARY DEMO — remove with the demo files.
 }
