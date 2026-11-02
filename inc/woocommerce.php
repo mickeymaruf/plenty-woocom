@@ -72,6 +72,48 @@ function plenty_cart_link(): void {
 	<?php
 }
 
+/**
+ * Prices for the product page price block and installments, as displayed in the shop (incl./excl.
+ * tax per settings). A variable product uses its cheapest variation until a size is picked.
+ *
+ * @return array{ regular: float, current: float, discount: int, pre_tax: float }
+ */
+function plenty_product_prices( WC_Product $product ): array {
+	if ( $product->is_type( 'variable' ) ) {
+		$prices  = $product->get_variation_prices( true )['price']; // Sorted by price, cheapest first.
+		$product = $prices ? wc_get_product( array_key_first( $prices ) ) : $product;
+	}
+
+	$price    = $product->get_price();
+	$regular  = '' !== (string) $product->get_regular_price() ? (float) wc_get_price_to_display( $product, array( 'price' => $product->get_regular_price() ) ) : 0.0;
+	$current  = '' !== (string) $price ? (float) wc_get_price_to_display( $product, array( 'price' => $price ) ) : 0.0;
+	$discount = $regular > $current && $current > 0 ? (int) round( ( $regular - $current ) / $regular * 100 ) : 0;
+	$pre_tax  = wc_tax_enabled() && $current > 0 ? (float) wc_get_price_excluding_tax( $product, array( 'price' => $price ) ) : 0.0;
+
+	return compact( 'regular', 'current', 'discount', 'pre_tax' );
+}
+
+// Each variation carries its own price block and installments markup, which assets/js/theme.js swaps
+// in when a size is picked (the formatting stays in PHP).
+add_filter( 'woocommerce_available_variation', 'plenty_variation_buy_panel_html', 10, 3 );
+
+function plenty_variation_buy_panel_html( array $data, $product, $variation ): array {
+	foreach ( array( 'price', 'installments' ) as $part ) {
+		ob_start();
+		get_template_part( "template-parts/product/{$part}", null, array( 'product' => $variation ) );
+		$data[ "plenty_{$part}" ] = ob_get_clean();
+	}
+
+	return $data;
+}
+
+// Out-of-stock sizes can't be picked (WooCommerce disables inactive variation options).
+add_filter( 'woocommerce_variation_is_active', 'plenty_variation_is_active', 10, 2 );
+
+function plenty_variation_is_active( bool $active, $variation ): bool {
+	return $active && $variation->is_in_stock();
+}
+
 // Product page button label (editable in Product Page Settings); external products keep their own label.
 add_filter( 'woocommerce_product_single_add_to_cart_text', 'plenty_single_add_to_cart_text', 10, 2 );
 

@@ -1,10 +1,11 @@
 <?php
 /**
  * Product page buy panel (Figma "ProductPanel"): title, tagline, short description, price with
- * discount, interest-free installments, add to cart, payment logos and the sleep specialist box.
+ * discount, size selector + add to cart, installments box and the sleep specialist box.
  *
- * Add to cart is WooCommerce's own form (works for simple and variable products); it is styled
- * in src/css/app.css under ".plenty-buy".
+ * Add to cart is WooCommerce's own form (works for simple and variable products; the size buttons
+ * are woocommerce/single-product/add-to-cart/variable.php); it is styled in src/css/app.css under
+ * ".plenty-buy".
  *
  * @package Plenty
  *
@@ -15,23 +16,6 @@ defined( 'ABSPATH' ) || exit;
 
 $product = $args['product'];
 $tagline = plenty_field( 'product_tagline', '', $product->get_id() );
-
-// Lowest price for variable products ("from"), as displayed in the shop (incl./excl. tax per settings).
-$is_variable = $product->is_type( 'variable' );
-$regular     = $is_variable ? $product->get_variation_regular_price( 'min' ) : $product->get_regular_price();
-$current     = $is_variable ? $product->get_variation_price( 'min' ) : $product->get_price();
-$regular     = '' !== (string) $regular ? (float) wc_get_price_to_display( $product, array( 'price' => $regular ) ) : 0.0;
-$current     = '' !== (string) $current ? (float) wc_get_price_to_display( $product, array( 'price' => $current ) ) : 0.0;
-$discount    = $regular > $current && $current > 0 ? (int) round( ( $regular - $current ) / $regular * 100 ) : 0;
-$pre_tax     = wc_tax_enabled() && $current > 0 ? (float) wc_get_price_excluding_tax( $product, array( 'price' => $is_variable ? $product->get_variation_price( 'min' ) : $product->get_price() ) ) : 0.0;
-
-$plans = array();
-for ( $i = 1; $i <= 4; $i++ ) {
-	$months = (int) plenty_content( "pdp_plan_{$i}_months" );
-	if ( $months > 1 && $current > 0 ) {
-		$plans[] = array( $months, (string) plenty_content( "pdp_plan_{$i}_badge" ) );
-	}
-}
 
 $support_chat = plenty_content( 'support_1_link' ); // Reuses the home "Sleep Specialists" WhatsApp link.
 $support_call = plenty_content( 'support_3_link' ); // ...and phone link.
@@ -49,64 +33,12 @@ $pill         = 'flex items-center gap-1.5 rounded-full text-[11px] font-semibol
 		<?php endif; ?>
 	</div>
 
-	<?php if ( $current > 0 ) : ?>
-		<div class="flex max-w-[440px] flex-col gap-3">
-			<p class="flex flex-wrap items-center gap-3">
-				<?php if ( $discount ) : ?>
-					<del class="text-[20px] font-medium leading-7 text-subtle"><?php echo wc_price( $regular ); // phpcs:ignore WordPress.Security.EscapeOutput ?></del>
-				<?php endif; ?>
-				<ins class="text-[30px] font-bold leading-9 text-ink no-underline"><?php echo wc_price( $current ); // phpcs:ignore WordPress.Security.EscapeOutput ?></ins>
-				<?php if ( $discount ) : ?>
-					<span class="rounded-full bg-navy px-3 py-1 text-[12px] font-bold uppercase leading-4 text-white"><?php echo esc_html( $discount . ' ' . plenty_content( 'pdp_discount_label' ) ); ?></span>
-				<?php endif; ?>
-			</p>
-
-			<?php if ( $pre_tax > 0 && round( $pre_tax, 2 ) !== round( $current, 2 ) ) : ?>
-				<p class="text-[12px] leading-4 text-subtle"><?php echo esc_html( plenty_content( 'pdp_pretax_label' ) ); ?> <?php echo wc_price( $pre_tax ); // phpcs:ignore WordPress.Security.EscapeOutput ?></p>
-			<?php endif; ?>
-
-			<?php if ( $plans ) : ?>
-				<dl class="flex flex-col gap-2 pt-1 text-[14px] leading-5">
-					<?php foreach ( $plans as [ $months, $badge ] ) : ?>
-						<div class="flex flex-wrap items-center gap-2">
-							<dt class="w-24 font-bold text-ink"><?php echo esc_html( $months . ' ' . plenty_content( 'pdp_months_label' ) ); ?></dt>
-							<dd class="whitespace-nowrap text-muted">
-								<?php
-								// Escaped label with the (trusted) wc_price() markup swapped in for {amount}.
-								$amount = wc_price( round( $current / $months ), array( 'decimals' => 0 ) );
-								echo str_replace( '{amount}', $amount, esc_html( plenty_content( 'pdp_plan_text' ) ) ); // phpcs:ignore WordPress.Security.EscapeOutput
-								?>
-							</dd>
-							<?php if ( $badge ) : ?>
-								<dd class="rounded bg-navy px-2 py-0.5 text-[10px] font-bold uppercase leading-[15px] text-white"><?php echo esc_html( $badge ); ?></dd>
-							<?php endif; ?>
-						</div>
-					<?php endforeach; ?>
-					<div class="flex items-center gap-2">
-						<dt class="w-24 font-bold text-ink"><?php echo esc_html( plenty_content( 'pdp_single_payment_label' ) ); ?></dt>
-						<dd class="text-muted"><?php echo wc_price( $current ); // phpcs:ignore WordPress.Security.EscapeOutput ?></dd>
-					</div>
-				</dl>
-			<?php endif; ?>
-		</div>
-	<?php endif; ?>
+	<?php // data-variation-html: replaced with the picked variation's markup (assets/js/theme.js); no whitespace inside, so empty:hidden works. ?>
+	<div class="max-w-[440px] empty:hidden" data-variation-html="plenty_price" aria-live="polite"><?php get_template_part( 'template-parts/product/price', null, array( 'product' => $product ) ); ?></div>
 
 	<?php woocommerce_template_single_add_to_cart(); ?>
 
-	<div class="flex flex-col items-center">
-		<ul class="flex flex-wrap justify-center gap-[11px]">
-			<?php for ( $i = 1; $i <= 5; $i++ ) : ?>
-				<?php $logo = plenty_content_image( "pdp_payment_{$i}", 'thumbnail', array( 'class' => 'block h-[27.34px] w-auto' ), array( 'class' => 'block h-[27.34px] w-10 object-cover' ) ); ?>
-				<?php if ( $logo ) : ?>
-					<li><?php echo $logo; // phpcs:ignore WordPress.Security.EscapeOutput ?></li>
-				<?php endif; ?>
-			<?php endfor; ?>
-		</ul>
-		<?php $payments_link = plenty_content( 'pdp_payments_link' ); ?>
-		<?php if ( plenty_link_title( $payments_link ) ) : ?>
-			<a class="pt-2.5 text-[14px] font-medium leading-5 text-[#368cf0] hover:underline" <?php echo plenty_link_attrs( $payments_link ); // phpcs:ignore WordPress.Security.EscapeOutput ?>><?php echo esc_html( plenty_link_title( $payments_link ) ); ?></a>
-		<?php endif; ?>
-	</div>
+	<div class="empty:hidden" data-variation-html="plenty_installments"><?php get_template_part( 'template-parts/product/installments', null, array( 'product' => $product ) ); ?></div>
 
 	<div class="flex flex-wrap items-center gap-4 rounded-2xl border border-[#f3f4f6] p-[17px]">
 		<div class="relative shrink-0">

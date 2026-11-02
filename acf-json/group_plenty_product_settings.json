@@ -19,11 +19,11 @@
             "required": 0
         },
         {
-            "key": "field_plenty_pdp_discount_label",
-            "label": "Discount badge text",
-            "name": "pdp_discount_label",
+            "key": "field_plenty_pdp_discount_badge",
+            "label": "Discount badge",
+            "name": "pdp_discount_badge",
             "type": "text",
-            "instructions": "Shown after the percentage, e.g. \"29 % de descuento\". Leave empty to use the default shown in the design.",
+            "instructions": "{percent} is replaced with the discount: calculated from the regular and sale price next to the price, the plan's discount in the installments box. Leave empty to use the default shown in the design.",
             "required": 0
         },
         {
@@ -35,103 +35,117 @@
             "required": 0
         },
         {
-            "key": "field_plenty_pdp_months_label",
-            "label": "\"Months\" label",
-            "name": "pdp_months_label",
+            "key": "field_plenty_pdp_size_heading",
+            "label": "Size selector heading",
+            "name": "pdp_size_heading",
+            "type": "text",
+            "instructions": "Shown above the size buttons of variable products with one attribute (with several, each uses its attribute name). The second line of each button is the term's description in Products → Attributes. Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_pdp_benefits_title",
+            "label": "Installments box: title",
+            "name": "pdp_benefits_title",
             "type": "text",
             "instructions": "Leave empty to use the default shown in the design.",
             "required": 0
         },
         {
-            "key": "field_plenty_pdp_plan_text",
-            "label": "Installment text",
-            "name": "pdp_plan_text",
-            "type": "text",
-            "instructions": "{amount} is replaced with the monthly amount. Leave empty to use the default shown in the design.",
-            "required": 0
-        },
-        {
-            "key": "field_plenty_pdp_single_payment_label",
-            "label": "Single payment label",
-            "name": "pdp_single_payment_label",
-            "type": "text",
-            "instructions": "Leave empty to use the default shown in the design.",
-            "required": 0
-        },
-        {
-            "key": "field_plenty_pdp_plan_1_months",
-            "label": "Plan 1: months",
-            "name": "pdp_plan_1_months",
+            "key": "field_plenty_pdp_plan_1_payments",
+            "label": "Plan 1: payments",
+            "name": "pdp_plan_1_payments",
             "type": "number",
-            "instructions": "Set to 0 to hide this plan. Leave empty to use the default shown in the design.",
+            "instructions": "Number of payments the price is divided into; 1 is a single payment. Set to 0 to hide this plan. Leave empty to use the default shown in the design.",
             "required": 0,
             "min": 0,
             "max": 60,
             "step": 1
         },
         {
-            "key": "field_plenty_pdp_plan_1_badge",
-            "label": "Plan 1: badge",
-            "name": "pdp_plan_1_badge",
-            "type": "text",
-            "instructions": "Leave empty to use the default shown in the design.",
-            "required": 0
+            "key": "field_plenty_pdp_plan_1_discount",
+            "label": "Plan 1: discount (%)",
+            "name": "pdp_plan_1_discount",
+            "type": "number",
+            "instructions": "Taken off the price before dividing it, e.g. 20 on $849 → 6 payments of $113,20. 0 shows no badge. Leave empty to use the default shown in the design.",
+            "required": 0,
+            "min": 0,
+            "max": 100,
+            "step": 1
         },
         {
-            "key": "field_plenty_pdp_plan_2_months",
-            "label": "Plan 2: months",
-            "name": "pdp_plan_2_months",
+            "key": "field_plenty_pdp_plan_2_payments",
+            "label": "Plan 2: payments",
+            "name": "pdp_plan_2_payments",
             "type": "number",
-            "instructions": "Set to 0 to hide this plan. Leave empty to use the default shown in the design.",
+            "instructions": "Number of payments the price is divided into; 1 is a single payment. Set to 0 to hide this plan. Leave empty to use the default shown in the design.",
             "required": 0,
             "min": 0,
             "max": 60,
             "step": 1
         },
         {
-            "key": "field_plenty_pdp_plan_2_badge",
-            "label": "Plan 2: badge",
-            "name": "pdp_plan_2_badge",
-            "type": "text",
-            "instructions": "Leave empty to use the default shown in the design.",
-            "required": 0
+            "key": "field_plenty_pdp_plan_2_discount",
+            "label": "Plan 2: discount (%)",
+            "name": "pdp_plan_2_discount",
+            "type": "number",
+            "instructions": "Taken off the price before dividing it, e.g. 20 on $849 → 6 payments of $113,20. 0 shows no badge. Leave empty to use the default shown in the design.",
+            "required": 0,
+            "min": 0,
+            "max": 100,
+            "step": 1
         },
         {
-            "key": "field_plenty_pdp_plan_3_months",
-            "label": "Plan 3: months",
-            "name": "pdp_plan_3_months",
+            "key": "field_plenty_pdp_plan_3_payments",
+            "label": "Plan 3: payments",
+            "name": "pdp_plan_3_payments",
             "type": "number",
-            "instructions": "Set to 0 to hide this plan. Leave empty to use the default shown in the design.",
+            "instructions": "Number of payments the price is divided into; 1 is a single payment. Set to 0 to hide this plan. Leave empty to use the default shown in the design.",
             "required": 0,
             "min": 0,
             "max": 60,
             "step": 1
         },
         {
-            "key": "field_plenty_pdp_plan_3_badge",
-            "label": "Plan 3: badge",
-            "name": "pdp_plan_3_badge",
-            "type": "text",
-            "instructions": "Leave empty to use the default shown in the design.",
-            "required": 0
-        },
-        {
-            "key": "field_plenty_pdp_plan_4_months",
-            "label": "Plan 4: months",
-            "name": "pdp_plan_4_months",
+            "key": "field_plenty_pdp_plan_3_discount",
+            "label": "Plan 3: discount (%)",
+            "name": "pdp_plan_3_discount",
             "type": "number",
-            "instructions": "Set to 0 to hide this plan. Leave empty to use the default shown in the design.",
+            "instructions": "Taken off the price before dividing it, e.g. 20 on $849 → 6 payments of $113,20. 0 shows no badge. Leave empty to use the default shown in the design.",
             "required": 0,
             "min": 0,
-            "max": 60,
+            "max": 100,
             "step": 1
         },
         {
-            "key": "field_plenty_pdp_plan_4_badge",
-            "label": "Plan 4: badge",
-            "name": "pdp_plan_4_badge",
+            "key": "field_plenty_pdp_installments_label",
+            "label": "Installments: \"payments\" word",
+            "name": "pdp_installments_label",
             "type": "text",
-            "instructions": "Leave empty to use the default shown in the design.",
+            "instructions": "Bold after the number, e.g. \"12 cuotas\". Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_pdp_installments_text",
+            "label": "Installments: text before the amount",
+            "name": "pdp_installments_text",
+            "type": "text",
+            "instructions": "E.g. \"sin interés de\". Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_pdp_single_label",
+            "label": "Single payment: \"payment\" word",
+            "name": "pdp_single_label",
+            "type": "text",
+            "instructions": "Used when a plan has 1 payment, e.g. \"1 pago\". Leave empty to use the default shown in the design.",
+            "required": 0
+        },
+        {
+            "key": "field_plenty_pdp_single_text",
+            "label": "Single payment: text before the amount",
+            "name": "pdp_single_text",
+            "type": "text",
+            "instructions": "E.g. \"de\". Leave empty to use the default shown in the design.",
             "required": 0
         },
         {
@@ -139,7 +153,7 @@
             "label": "Payment logo 1",
             "name": "pdp_payment_1",
             "type": "image",
-            "instructions": "Shown 27px tall. Leave empty to use the design logo.",
+            "instructions": "Shown 27px tall after plan 1 in the installments box. Leave empty to use the design logo.",
             "required": 0,
             "return_format": "id",
             "preview_size": "medium",
@@ -151,7 +165,7 @@
             "label": "Payment logo 2",
             "name": "pdp_payment_2",
             "type": "image",
-            "instructions": "Shown 27px tall. Leave empty to use the design logo.",
+            "instructions": "Shown 27px tall after plan 1 in the installments box. Leave empty to use the design logo.",
             "required": 0,
             "return_format": "id",
             "preview_size": "medium",
@@ -163,7 +177,7 @@
             "label": "Payment logo 3",
             "name": "pdp_payment_3",
             "type": "image",
-            "instructions": "Shown 27px tall. Leave empty to use the design logo.",
+            "instructions": "Shown 27px tall after plan 1 in the installments box. Leave empty to use the design logo.",
             "required": 0,
             "return_format": "id",
             "preview_size": "medium",
@@ -175,7 +189,7 @@
             "label": "Payment logo 4",
             "name": "pdp_payment_4",
             "type": "image",
-            "instructions": "Shown 27px tall. Leave empty to use the design logo.",
+            "instructions": "Shown 27px tall after plan 1 in the installments box. Leave empty to use the design logo.",
             "required": 0,
             "return_format": "id",
             "preview_size": "medium",
@@ -187,7 +201,7 @@
             "label": "Payment logo 5",
             "name": "pdp_payment_5",
             "type": "image",
-            "instructions": "Shown 27px tall. Leave empty to use the design logo.",
+            "instructions": "Shown 27px tall after plan 1 in the installments box. Leave empty to use the design logo.",
             "required": 0,
             "return_format": "id",
             "preview_size": "medium",
@@ -195,11 +209,11 @@
             "mime_types": ""
         },
         {
-            "key": "field_plenty_pdp_payments_link",
-            "label": "Payment methods link",
-            "name": "pdp_payments_link",
+            "key": "field_plenty_pdp_payments_button",
+            "label": "Installments box: button",
+            "name": "pdp_payments_button",
             "type": "link",
-            "instructions": "Leave empty to use the default shown in the design.",
+            "instructions": "E.g. a page listing installments and payment methods. Leave empty to use the default shown in the design.",
             "required": 0,
             "return_format": "array"
         },
@@ -455,5 +469,5 @@
     "active": true,
     "description": "Content shared by every product page.",
     "show_in_rest": 0,
-    "modified": 1793022632
+    "modified": 1793602111
 }

@@ -71,6 +71,50 @@ document.querySelectorAll( '[data-gallery]' ).forEach( ( gallery ) => {
 	} );
 } );
 
+// Product page sizes: the option buttons (radios) mirror WooCommerce's hidden variation selects,
+// whose script only speaks jQuery events. A found variation swaps in its price and installments
+// markup (plenty_price / plenty_installments in its data); a reset restores the page's own.
+document.querySelectorAll( '.plenty-buy form.variations_form' ).forEach( ( form ) => {
+	const $ = window.jQuery;
+	if ( ! $ ) {
+		return;
+	}
+
+	const parts = [ ...form.closest( '.plenty-buy' ).querySelectorAll( '[data-variation-html]' ) ].map( ( el ) => ( { el, key: el.dataset.variationHtml, initial: el.innerHTML } ) );
+	const groups = form.querySelectorAll( '[data-attribute-name]' );
+	const selectFor = ( group ) => group.querySelector( `select[name="${ group.dataset.attributeName }"]` );
+
+	// WooCommerce removes options no variation matches and disables inactive (out-of-stock) ones.
+	const sync = () => groups.forEach( ( group ) => {
+		const select = selectFor( group );
+		group.querySelectorAll( 'input[type="radio"]' ).forEach( ( radio ) => {
+			const option = [ ...select.options ].find( ( item ) => item.value === radio.value );
+			radio.disabled = ! option || option.disabled;
+			radio.checked = select.value === radio.value;
+		} );
+	} );
+
+	form.addEventListener( 'change', ( event ) => {
+		const group = event.target.closest( '[data-attribute-name]' );
+		if ( group && event.target.type === 'radio' ) {
+			$( selectFor( group ) ).val( event.target.value ).trigger( 'change' );
+		}
+	} );
+
+	$( form )
+		.on( 'woocommerce_update_variation_values reset_data found_variation', sync )
+		.on( 'found_variation', ( event, variation ) => parts.forEach( ( { el, key } ) => {
+			if ( typeof variation[ key ] === 'string' ) {
+				el.innerHTML = variation[ key ];
+			}
+		} ) )
+		.on( 'reset_data', () => parts.forEach( ( { el, initial } ) => {
+			el.innerHTML = initial;
+		} ) );
+
+	sync();
+} );
+
 // FAQ (product and About pages): "Show all" reveals questions beyond the first eight; one question
 // open at a time, answers slide open and closed. data-closing turns the icon back while closing.
 document.querySelectorAll( '[data-faq]' ).forEach( ( faq ) => {

@@ -90,7 +90,7 @@ body:is(.woocommerce, .woocommerce-page) img {
 body.single-product div.plenty-buy form.cart {
 	display: flex;
 	flex-direction: column;
-	gap: 12px;
+	gap: 16px;
 	margin: 0;
 }
 
@@ -99,9 +99,10 @@ body.single-product div.plenty-buy form.cart::after {
 	display: none;
 }
 
-/* The design has no quantity selector; the hidden input still submits 1. */
+/* The design has no quantity selector; the hidden input still submits 1. !important: WooCommerce's
+   variation script .show()s it (inline style) when a variation is found. */
 body.single-product div.plenty-buy form.cart div.quantity {
-	display: none;
+	display: none !important;
 }
 
 body.single-product div.plenty-buy form.cart .single_add_to_cart_button {
@@ -159,38 +160,27 @@ body.single-product div.plenty-buy form.cart .single_add_to_cart_button[aria-bus
 	animation: spin 0.7s linear infinite;
 }
 
-/* Variable products: attribute dropdowns. */
+/*
+ * Variable products: option buttons (woocommerce/single-product/add-to-cart/variable.php). The
+ * <select>s stay for WooCommerce's variation script but are hidden, and the variation price it
+ * shows is too: the buy panel's own price block switches to the variation instead.
+ */
 body.single-product div.plenty-buy form.cart .variations {
 	margin: 0;
-	font-size: 14px;
-}
-
-body.single-product div.plenty-buy form.cart .variations th,
-body.single-product div.plenty-buy form.cart .variations td {
-	display: block;
-	padding: 0 0 4px;
-	text-align: left;
-	line-height: 20px;
 }
 
 body.single-product div.plenty-buy form.cart .variations label {
-	font-weight: 600;
-	color: var(--color-ink);
+	font-weight: inherit;
+	text-align: center;
 }
 
-body.single-product div.plenty-buy form.cart .variations select {
-	width: 100%;
-	min-width: 0;
-	margin: 0;
-	padding: 10px 40px 10px 14px;
-	border: 1px solid #e5e7eb;
-	border-radius: 12px;
-	background-color: #fff;
-	font-size: 14px;
-	line-height: 20px;
+body.single-product div.plenty-buy form.cart .variations select,
+body.single-product div.plenty-buy .woocommerce-variation-price {
+	display: none;
 }
 
 body.single-product div.plenty-buy form.cart .reset_variations {
+	align-self: flex-start;
 	display: inline-block;
 	margin-top: 4px;
 	font-size: 12px;
